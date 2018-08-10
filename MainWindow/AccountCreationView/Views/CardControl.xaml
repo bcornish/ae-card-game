@@ -1,0 +1,30 @@
+﻿<UserControl x:Class="MainWindow.Views.CardControl"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:MainWindow.Views"
+             mc:Ignorable="d" 
+             d:DesignHeight="150" d:DesignWidth="100">
+    <Grid>
+        <Rectangle RadiusX="12.5" RadiusY="12.5" Margin="-45,-15,-45,-135">
+            <Rectangle.Fill>
+                <LinearGradientBrush EndPoint="0.47, -0.167" StartPoint="0.86,0.92">
+                    <GradientStop Color="#0E385F" Offset="0"></GradientStop>
+                    <GradientStop Color="#3498DB" Offset="1"></GradientStop>
+                </LinearGradientBrush>
+            </Rectangle.Fill>
+            <Rectangle.Effect>
+                <DropShadowEffect Direction="145" BlurRadius="10" ShadowDepth="0"></DropShadowEffect>
+            </Rectangle.Effect>
+        </Rectangle>
+        <Border   Name="border" BorderBrush="#EBF0F5" BorderThickness="10"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="135" Width="120" CornerRadius="0,0,8,8" Margin="-15,15,-15,0" >
+            <Image x:Name="___AccountCreationView_component_9215_png" Source="/AccountCreationView;component/9215.png" Stretch="Uniform"  Height="{Binding Height, ElementName=border}" Width="{Binding Width, ElementName=border}"/>
+        </Border>
+    
+        <TextBlock Background="#EBF0F5" Text="NI 9215" TextAlignment="Center" Margin="-10,-15,-10,135" Width="120" FontSize="18" >
+        </TextBlock>
+        
+
+    </Grid>
+</UserControl>

@@ -1,0 +1,56 @@
+﻿<Window x:Class="MainWindow.Views.AccountCreationView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Engine.ViewModels;assembly=ClassLibrary1"
+        d:DataContext="{d:DesignInstance viewmodels:AccountCreationViewModel}"
+        mc:Ignorable="d"
+        Title="New Account" Height="350" Width="600">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+        </Grid.ColumnDefinitions>
+
+        <TextBlock Grid.Row="0"
+                   Grid.Column="1"
+                   Foreground="Red"
+                   TextWrapping="Wrap"
+                   Width="200"
+                   HorizontalAlignment="Center"
+                   Padding="5" Margin="5" Grid.RowSpan="4">
+            <Run Text="{Binding NewAccount.AccountValidationMessage}" />
+            
+        </TextBlock>
+        <TextBox Grid.Row="0"
+                   Text="{Binding NewAccount.Username}"
+                   Width="200"
+                   HorizontalAlignment="Center"
+                   Visibility="Visible"
+                   Padding="5" Margin="5"/>
+        <TextBox Grid.Row="1"
+                   Text="{Binding NewAccount.Password}"
+                   Width="200"
+                   HorizontalAlignment="Center"
+                   Visibility="Visible"
+                   Padding="5" Margin="5"/>
+        <Button Grid.Row="2" Content="Check Account"
+                   Click="OnClick_ValidateAccount"
+                   Width="200"
+                   HorizontalAlignment="Center"
+                   Padding="5" Margin="5"/>
+        <Button Grid.Row="3" Content="Create account"
+                   Click="OnClick_CreateAccount"
+                   Width="200"
+                   HorizontalAlignment="Center"
+                   Padding="5" Margin="5"/>
+    </Grid>
+</Window>
