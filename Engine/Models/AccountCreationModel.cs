@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Engine.Models
 {
-    public class AccountCreationModel: INotifyPropertyChanged
+    public class AccountCreationModel: BaseModel
     {
         private string username;
         private string password;
@@ -64,15 +64,6 @@ namespace Engine.Models
                 accountValidationMessage = value;
 
                 OnPropertyChanged(nameof(AccountValidationMessage));
-            }
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyname)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
             }
         }
 

@@ -22,6 +22,10 @@ namespace Engine.ViewModels
 
         #region Methods
 
+        public void ImageSource()
+        {
+            Model.ImageSourceLookup();
+        }
         #endregion
 
     }

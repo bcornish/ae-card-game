@@ -8,47 +8,62 @@ using System.Threading.Tasks;
 namespace Engine.Models
 {
     
-    public class CardBaseModel : INotifyPropertyChanged
+    public class CardBaseModel : BaseModel
     {
         private string modelNumber;
         private string specifications;
+        private string cardBaseImage;
+        private string price;
         
-        private struct cardSize
-        {
-            private double width;
-            private double height;
-        }
-        private enum size
-        {
-            Small = 1, Medium = 2, Large = 3
-        }
-        public string ModelNumber
+
+        public string ModuleNumber
         {
             get { return modelNumber; }
             set
             {
                 modelNumber = value;
 
-                OnPropertyChanged(nameof(ModelNumber));
+                OnPropertyChanged(nameof(ModuleNumber));
             }
         }
-        public string Specs
+        public string ModuleSpecs
         {
             get { return specifications; }
             set
             {
                 specifications = value;
 
-                OnPropertyChanged(nameof(Specs));
+                OnPropertyChanged(nameof(ModuleSpecs));
             }
         }
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyname)
+        public string ModulePrice
         {
-            if (PropertyChanged != null)
+            get { return price; }
+            set
             {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
+                price = value;
+
+                OnPropertyChanged(nameof(ModulePrice));
             }
+        }
+        public string CardBaseImage
+        {
+            get { return cardBaseImage; }
+            set
+            {
+                cardBaseImage = value;
+
+                OnPropertyChanged(nameof(CardBaseImage));
+            }
+        }
+
+        public void ImageSourceLookup()
+        {
+            //TODO: implement logic to look up cards
+            CardBaseImage = "/AccountCreationView;component/Blank Fake Card.bmp";
+            ModuleNumber = "NI 9215";
+            ModulePrice = "$700";
+            ModuleSpecs = "Testing";
         }
     }
 }

@@ -7,7 +7,7 @@ using System.ComponentModel;
 
 namespace Engine.Models
 {
-    public class LoginModel : INotifyPropertyChanged
+    public class LoginModel : BaseModel
     {
         private string username;
         private string password;
@@ -55,15 +55,6 @@ namespace Engine.Models
             else
                 AccountValidationMessage = "Failed login. Check username and password and try again.";
 
-        }
-
-        public event PropertyChangedEventHandler PropertyChanged;
-        private void OnPropertyChanged(string propertyname)
-        {
-            if (PropertyChanged != null)
-            {
-                PropertyChanged(this, new PropertyChangedEventArgs(propertyname));
-            }
         }
     }
 }

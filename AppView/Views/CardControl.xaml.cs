@@ -29,5 +29,10 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
+
+        private void ImageSourceQuery(object sender, RoutedEventArgs e)
+        {
+            viewModel.ImageSource();
+        }
     }
 }

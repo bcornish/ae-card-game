@@ -7,7 +7,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Engine", "Engine\Engine.csp
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TestEngine", "Test Engine\TestEngine.csproj", "{BCF9E4B8-AA3B-4D99-AE99-C121FE531382}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppView", "MainWindow\AccountCreationView\AppView.csproj", "{FAF18B15-D124-42E5-AC23-2AA737B8E5E2}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AppView", "AppView\AppView.csproj", "{FAF18B15-D124-42E5-AC23-2AA737B8E5E2}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
