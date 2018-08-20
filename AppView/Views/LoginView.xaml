@@ -7,6 +7,9 @@
         d:DataContext="{d:DesignInstance viewmodels:LoginViewModel}"
         mc:Ignorable="d"
         Title="Login" Height="300" Width="300">
+    <Page.DataContext>
+        <viewmodels:LoginViewModel/>
+    </Page.DataContext>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -43,7 +46,7 @@
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
         <Button Grid.Row="2" Content="Login"
-                   Click="OnClick_Login"
+                   Command="{Binding loginClick}"
                    Width="200"
                    HorizontalAlignment="Center"
                    Padding="5" Margin="5"/>

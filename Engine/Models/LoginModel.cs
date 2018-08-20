@@ -11,10 +11,18 @@ namespace Engine.Models
     {
         private string username;
         private string password;
-       // private string usernameValidationMessage;
-       // private string passwordValidationMessage;
+        private string usernameValidationMessage;
+        private string passwordValidationMessage;
         private string accountValidationMessage;
         private bool loginSuccess;
+
+        public LoginModel()
+        {
+            username = null;
+            password = null;
+            accountValidationMessage = null;
+            loginSuccess = false;
+        }
 
         public string Username
         {

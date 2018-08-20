@@ -56,14 +56,14 @@ namespace Engine.Models
                 }
         }
 
-        public string AccountValidationMessage
+        public string AccountValidationMessage1
         {
             get { return accountValidationMessage; }
             set
             {
                 accountValidationMessage = value;
 
-                OnPropertyChanged(nameof(AccountValidationMessage));
+                OnPropertyChanged(nameof(AccountValidationMessage1));
             }
         }
 
@@ -145,7 +145,7 @@ namespace Engine.Models
         {
             this.ValidateUsername();
             this.ValidatePassword();
-            AccountValidationMessage = UsernameValidationMessage + PasswordValidationMessage;
+            AccountValidationMessage1 = UsernameValidationMessage + PasswordValidationMessage;
 
         }
     }

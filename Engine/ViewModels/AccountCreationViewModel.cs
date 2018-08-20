@@ -34,6 +34,11 @@ namespace Engine.ViewModels
         {
             NewAccount.ValidateFinalAccountMessage();
         }
+
+        public string UsernameMessage()
+        {
+            return NewAccount.UsernameValidationMessage;
+        }
         #endregion
     }
 }
