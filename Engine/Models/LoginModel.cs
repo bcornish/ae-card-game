@@ -11,9 +11,10 @@ namespace Engine.Models
     {
         private string username;
         private string password;
-        private string usernameValidationMessage;
-        private string passwordValidationMessage;
+       // private string usernameValidationMessage;
+       // private string passwordValidationMessage;
         private string accountValidationMessage;
+        private bool loginSuccess;
 
         public string Username
         {
@@ -48,13 +49,29 @@ namespace Engine.Models
             }
         }
 
+        public bool LoginCompleted
+        {
+            get { return loginSuccess; }
+            set
+            {
+                loginSuccess = value;
+
+                OnPropertyChanged(nameof(LoginCompleted));
+            }
+        }
+
         public void ValidateAccountAndLogin()
         {
             if (Username == "bcornish" && Password == "PurpleTomatoes9!")
+            {
                 AccountValidationMessage = "Successful login";
+                LoginCompleted = true;
+            }
             else
+            {
                 AccountValidationMessage = "Failed login. Check username and password and try again.";
-
+                LoginCompleted = false;
+            }           
         }
     }
 }

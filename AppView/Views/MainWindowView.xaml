@@ -1,0 +1,21 @@
+﻿<Window x:Class="MainWindow.Views.MainWindowView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:viewmodels="clr-namespace:Engine.ViewModels;assembly=ClassLibrary1"
+        d:DataContext="{d:DesignInstance viewmodels:MainWindowViewModel}"
+        mc:Ignorable="d"
+        Title="MainWindowView" Height="800" Width="600">
+    <Grid>
+        <StackPanel>
+            <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
+                <Button Content="Create Account" MinWidth="100" Click="Button_Click_Create_Account"/>
+                <Button Content="Login" MinWidth="100" Margin="10,0,0,0" Click="Button_Click_Login"/>
+            </StackPanel>
+            <Frame x:Name="Main" Margin="0,35,0,0"/>
+        </StackPanel>
+        
+        
+    </Grid>
+</Window>

@@ -26,8 +26,13 @@ namespace Engine.ViewModels
         {
             Model.ValidateAccountAndLogin();
         }
+
+        public bool LoginValidated()
+        {
+            return Model.LoginCompleted;
+        }
         #endregion
-       
+
 
     }
 }

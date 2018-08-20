@@ -16,22 +16,27 @@ using Engine.ViewModels;
 namespace MainWindow.Views
 {
     /// <summary>
-    /// Interaction logic for LoginView.xaml
+    /// Interaction logic for MainWindowView.xaml
     /// </summary>
-    public partial class LoginView : Page
+    public partial class MainWindowView : Window
     {
-        private readonly LoginViewModel viewModel = new LoginViewModel();
+        private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
 
-        public LoginView()
+        public MainWindowView()
         {
             InitializeComponent();
 
             DataContext = viewModel;
         }
 
-        private void OnClick_Login(object sender, RoutedEventArgs e)
+        private void Button_Click_Create_Account(object sender, RoutedEventArgs e)
         {
-            viewModel.LoginToAccount();
+            Main.Content = new AccountCreationView();
+        }
+
+        private void Button_Click_Login(object sender, RoutedEventArgs e)
+        {
+            Main.Content = new LoginView();
         }
     }
 }

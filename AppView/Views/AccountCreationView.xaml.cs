@@ -19,7 +19,7 @@ namespace MainWindow.Views
     /// <summary>
     /// Interaction logic for AccountCreationView.xaml
     /// </summary>
-    public partial class AccountCreationView : Window
+    public partial class AccountCreationView : Page
     {
         private readonly AccountCreationViewModel viewModel = new AccountCreationViewModel();
 
