@@ -13,10 +13,14 @@ namespace TestConsole
         
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello World");
-            CardGameDatabase database = new CardGameDatabase();
-            CardGameDatabase.OpenDatabaseConnection();
-
+            Console.WriteLine("Beginning Test...");
+            AccountDatabase database = new AccountDatabase();
+            database.OpenConnection();
+            AccountRecord dummyRecord = new AccountRecord();
+            dummyRecord.userName = "pineappleMan";
+            string dummyPassword = "easypassword";
+            database.AddAccountRecord(dummyRecord, dummyPassword);
+            Console.WriteLine("AccountRecord Added! Waiting to end");
             Console.ReadLine();
         }
     }

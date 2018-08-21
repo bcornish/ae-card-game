@@ -41,7 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CardGameDatabase.cs" />
+    <Compile Include="AccountDatabase.cs" />
+    <Compile Include="AccountRecord.cs" />
+    <Compile Include="GameDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

@@ -12,11 +12,11 @@ namespace GatewayLibrary
      * to and from the NICardGame database
      */
 
-    public class CardGameDatabase
+    public class GameDatabase
     {
-       private static SqlConnection databaseConnection { get; set; }
+       protected SqlConnection databaseConnection { get; set; }
 
-        public static void OpenDatabaseConnection()
+        public void OpenConnection()
         {
             //define connection string for connecting to the SQL Server database
             string userID = "cardGame";
@@ -36,6 +36,11 @@ namespace GatewayLibrary
             {
                 Console.WriteLine(e.ToString());
             }
+        }
+
+        public void CloseConnection()
+        {
+            databaseConnection.Close();
         }
 
     }
