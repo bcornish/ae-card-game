@@ -21,7 +21,7 @@ namespace Engine.Models
             username = null;
             password = null;
             accountValidationMessage = null;
-            loginSuccess = false;
+            loginSuccess = true;
         }
 
         public string Username

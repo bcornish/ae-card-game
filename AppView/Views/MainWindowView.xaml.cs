@@ -22,21 +22,23 @@ namespace MainWindow.Views
     {
         private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
 
+        private readonly NavigationViewModel viewModel1 = new NavigationViewModel();
+
         public MainWindowView()
         {
             InitializeComponent();
 
-            DataContext = viewModel;
+            DataContext = viewModel1;
         }
 
-        private void Button_Click_Create_Account(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new AccountCreationView();
-        }
+        //private void Button_Click_Create_Account(object sender, RoutedEventArgs e)
+        //{
+        //    Main.Content = new AccountCreationView();
+        //}
 
-        private void Button_Click_Login(object sender, RoutedEventArgs e)
-        {
-            Main.Content = new LoginView();
-        }
+        //private void Button_Click_Login(object sender, RoutedEventArgs e)
+        //{
+        //    Main.Content = new LoginView();
+        //}
     }
 }
