@@ -41,9 +41,9 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AccountDatabase.cs" />
-    <Compile Include="AccountRecord.cs" />
-    <Compile Include="GameDatabase.cs" />
+    <Compile Include="Databases\AccountDatabase.cs" />
+    <Compile Include="Records\AccountRecord.cs" />
+    <Compile Include="Databases\GameDatabase.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />

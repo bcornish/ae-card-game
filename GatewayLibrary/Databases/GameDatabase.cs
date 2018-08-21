@@ -16,6 +16,7 @@ namespace GatewayLibrary
     {
        protected SqlConnection databaseConnection { get; set; }
 
+        //opens a connection to the SQL database
         public void OpenConnection()
         {
             //define connection string for connecting to the SQL Server database
@@ -25,8 +26,8 @@ namespace GatewayLibrary
             string database = "NICardGame";
             string connectionString = $"user id={userID};password={password};" +
                                       $"server={server};database={database};";
-            //connect to the NICardGame database
-            
+            //connect to the NICardGame database 
+            //***(if connection fails, need a better method of error handling!)***
             databaseConnection = new SqlConnection(connectionString);
             try
             {
@@ -37,7 +38,14 @@ namespace GatewayLibrary
                 Console.WriteLine(e.ToString());
             }
         }
+        //this function executes a sql command to send something to the database
+        protected void ExecuteSqlSendCommand(string commandText)
+        {
+            SqlCommand command = new SqlCommand(commandText, databaseConnection);
+            command.ExecuteNonQuery();
+        }
 
+        //closes the connection to the SQL database
         public void CloseConnection()
         {
             databaseConnection.Close();
