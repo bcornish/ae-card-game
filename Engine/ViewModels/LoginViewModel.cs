@@ -12,13 +12,13 @@ namespace Engine.ViewModels
     {
 
         public LoginModel Model { get; set; }
-        private LoginToAccountCommand Command;
+        private ButtonCommand Command;
 
         #region Constructor
         public LoginViewModel()
         {
             Model = new LoginModel();
-            Command = new LoginToAccountCommand(this);
+            Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
         }
 
         #endregion
@@ -29,22 +29,22 @@ namespace Engine.ViewModels
         {
             Model.ValidateAccountAndLogin();
         }
-        public class LoginToAccountCommand : RelayCommand
-        {
-            private LoginViewModel viewModel;
-            public LoginToAccountCommand(LoginViewModel VM): base(VM)
-            {
-                viewModel = VM;
-            }
-            public new bool CanExecute(object parameter)
-            {
-                return true;
-            }
-            public override void Execute(object parameter)
-            {
-                viewModel.LoginToAccount();
-            }
-        }
+        //public class LoginToAccountCommand : RelayCommand
+        //{
+        //    private LoginViewModel viewModel;
+        //    public LoginToAccountCommand(LoginViewModel VM): base(VM)
+        //    {
+        //        viewModel = VM;
+        //    }
+        //    public new bool CanExecute(object parameter)
+        //    {
+        //        return true;
+        //    }
+        //    public override void Execute(object parameter)
+        //    {
+        //        viewModel.LoginToAccount();
+        //    }
+        //}
 
         public ICommand loginClick
         {

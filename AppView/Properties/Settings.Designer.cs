@@ -8,7 +8,7 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-namespace MainWindow.Views.Properties {
+namespace MainWindow.Properties {
     
     
     [global::System.Runtime.CompilerServices.CompilerGeneratedAttribute()]

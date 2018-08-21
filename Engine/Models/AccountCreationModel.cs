@@ -14,6 +14,17 @@ namespace Engine.Models
         private string usernameValidationMessage;
         private string passwordValidationMessage;
         private string accountValidationMessage;
+        private bool passAccountCheck;
+        private bool accountCreated;
+
+        public AccountCreationModel()
+        {
+            username = null;
+            password = null;
+            accountValidationMessage = null;
+            passAccountCheck = true;
+            accountCreated = true;
+        }
 
         public string Username
         {
@@ -56,14 +67,36 @@ namespace Engine.Models
                 }
         }
 
-        public string AccountValidationMessage1
+        public string AccountValidationMessage
         {
             get { return accountValidationMessage; }
             set
             {
                 accountValidationMessage = value;
 
-                OnPropertyChanged(nameof(AccountValidationMessage1));
+                OnPropertyChanged(nameof(AccountValidationMessage));
+            }
+        }
+
+        public bool AccountCheck
+        {
+            get { return passAccountCheck; }
+            set
+            {
+                passAccountCheck = value;
+
+                OnPropertyChanged(nameof(AccountCheck));
+            }
+        }
+
+        public bool AccountCreated
+        {
+            get { return accountCreated; }
+            set
+            {
+               accountCreated = value;
+
+                OnPropertyChanged(nameof(AccountCreated));
             }
         }
 
@@ -109,6 +142,8 @@ namespace Engine.Models
             if (PasswordValidationMessage == null)
             {
                 PasswordValidationMessage = "\u2022 Password is acceptable. \n";
+                AccountCheck = true;
+                AccountCreated = true;
             }
         }
 
@@ -145,7 +180,7 @@ namespace Engine.Models
         {
             this.ValidateUsername();
             this.ValidatePassword();
-            AccountValidationMessage1 = UsernameValidationMessage + PasswordValidationMessage;
+            AccountValidationMessage = UsernameValidationMessage + PasswordValidationMessage;
 
         }
     }

@@ -8,5 +8,9 @@ namespace Engine.Models
 {
     class MainWindowModel: BaseModel
     {
+        public MainWindowModel()
+        {
+
+        }
     }
 }

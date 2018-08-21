@@ -14,8 +14,14 @@ namespace Engine.Models
         private string specifications;
         private string cardBaseImage;
         private string price;
-        
 
+        public CardBaseModel()
+        {
+            modelNumber = null;
+            specifications = null;
+            cardBaseImage = null;
+            price = null;
+        }
         public string ModuleNumber
         {
             get { return modelNumber; }
@@ -60,10 +66,12 @@ namespace Engine.Models
         public void ImageSourceLookup()
         {
             //TODO: implement logic to look up cards
-            CardBaseImage = "/AccountCreationView;component/Blank Fake Card.bmp";
+ 
+            CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
             ModuleNumber = "NI 9215";
             ModulePrice = "$700";
             ModuleSpecs = "Testing";
-        }
+                       
+    }
     }
 }

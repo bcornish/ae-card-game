@@ -8,7 +8,7 @@ using System.Windows.Input;
 
 namespace Engine.ViewModels
 {
-    public class BaseViewModel : INotifyPropertyChanged 
+    public class BaseViewModel : INotifyPropertyChanged
     {
 
         public event PropertyChangedEventHandler PropertyChanged;
@@ -41,6 +41,34 @@ namespace Engine.ViewModels
             public virtual void Execute(object parameter)
             {
 
+            }
+            #endregion
+        }
+        //Generalized Command class for buttons for binding
+        public class ButtonCommand : ICommand
+        {
+            private Action WhattoExecute;
+            //private Func<bool> WhentoExecute;
+            private bool WhentoExecute;
+
+            public ButtonCommand(Action action, bool when)
+            {
+                WhattoExecute = action;
+                WhentoExecute = when;
+            }
+
+            #region ICommand Members
+
+            public bool CanExecute(object parameter)
+            {
+                return WhentoExecute;
+            }
+
+            public event EventHandler CanExecuteChanged;
+
+            public virtual void Execute(object parameter)
+            {
+                WhattoExecute();
             }
 
             #endregion

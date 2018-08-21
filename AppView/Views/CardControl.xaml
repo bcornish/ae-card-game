@@ -22,8 +22,8 @@
                     <ColumnDefinition Width="Auto"/>
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
-                
-                <Image Source="/AccountCreationView;component/Blank Fake Card.bmp" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
+
+                <Image Source="pack://application:,,,/Window;component/Blank Fake Card.bmp" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
                 <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.ModuleNumber, TargetNullValue='9215'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
                 <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.ModulePrice, TargetNullValue='800'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
                 <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.ModuleSpecs, TargetNullValue='Testing'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>

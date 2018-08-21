@@ -43,7 +43,7 @@
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
         <Button Grid.Row="2" Content="Check Account"
-                   Click="OnClick_ValidateAccount"
+                   Command="{Binding validateClick}"
                    Width="200"
                    HorizontalAlignment="Center"
                    Padding="5" Margin="5"/>
