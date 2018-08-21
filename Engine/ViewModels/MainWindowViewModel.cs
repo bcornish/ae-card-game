@@ -8,6 +8,12 @@ namespace Engine.ViewModels
 {
     public class MainWindowViewModel
     {
+        #region Constructor
+        public MainWindowViewModel()
+        {
 
+        }
+
+        #endregion
     }
 }

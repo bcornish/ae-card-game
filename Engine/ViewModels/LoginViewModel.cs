@@ -54,9 +54,9 @@ namespace Engine.ViewModels
             }
         }
 
-        public bool LoginValidated()
+        public bool LoginValidated
         {
-            return Model.LoginCompleted;
+            get { return ! Model.LoginCompleted; }
         }
         #endregion
 
