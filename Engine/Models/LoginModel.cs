@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using GatewayLibrary;
 
 namespace Engine.Models
 {
@@ -70,7 +71,12 @@ namespace Engine.Models
 
         public void ValidateAccountAndLogin()
         {
-            if (Username == "bcornish" && Password == "PurpleTomatoes9!")
+            //open connection to the account database
+            AccountDatabase database = new AccountDatabase();
+            database.OpenConnection();
+            //check whether the username/password combination is valid or not
+            AccountRecord loginAccount = database.LookUpAccountRecord(Username, Password);
+            if (loginAccount.ErrorString == "valid record")
             {
                 AccountValidationMessage = "Successful login";
                 LoginCompleted = true;

@@ -18,15 +18,17 @@ namespace Engine.ViewModels
         public LoginViewModel()
         {
             Model = new LoginModel();
-            Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
+            //passwordboxes don't work with bindings so reverting to old method for this
+            //Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
         }
 
         #endregion
 
         #region Methods
 
-        public void LoginToAccount()
+        public void LoginToAccount(object parameter)
         {
+            Model.Password = this.ConvertToUnsecureString(parameter as System.Security.SecureString);
             Model.ValidateAccountAndLogin();
         }
         //public class LoginToAccountCommand : RelayCommand
@@ -46,13 +48,14 @@ namespace Engine.ViewModels
         //    }
         //}
 
-        public ICommand loginClick
-        {
-            get
-            {
-                return Command;
-            }
-        }
+            //bindings don't work with passwordboxes so I'm reverting to the old method
+        //public ICommand loginClick
+        //{
+        //    get
+        //    {
+        //        return Command;
+        //    }
+        //}
 
         public bool LoginValidated
         {

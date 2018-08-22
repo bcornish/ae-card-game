@@ -44,7 +44,7 @@ namespace TestConsole
                 string username = Console.ReadLine();
                 Console.WriteLine("Please provide a password:");
                 string password = Console.ReadLine();
-                testRecord = database.CheckAccountVsDatabase(username, password);
+                testRecord = database.LookUpAccountRecord(username, password);
                 Console.WriteLine($"Hello {testRecord.Username}!");
                 Console.WriteLine(testRecord.ErrorString);
                 database.CloseConnection();

@@ -29,15 +29,28 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
-
-        private void OnClick_ValidateAccount(object sender, RoutedEventArgs e)
+        //makes the password from the passwordbox available as a secure string,
+        //this is necessary as plain text value is not available for password box, and bindings don't work
+        private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ValidateAccount();
+            viewModel.CreateAccount(userPassword.SecurePassword);
         }
 
-        private void OnClick_CreateAccount(object sender, RoutedEventArgs e)
+        private void ValidateButton_Click(object sender, RoutedEventArgs e)
         {
-           
+            viewModel.ValidateAccount(userPassword.SecurePassword);
         }
+        /*
+* Replaced with bindings
+private void OnClick_ValidateAccount(object sender, RoutedEventArgs e)
+{
+viewModel.ValidateAccount();
+}
+
+private void OnClick_CreateAccount(object sender, RoutedEventArgs e)
+{
+
+}
+*/
     }
 }

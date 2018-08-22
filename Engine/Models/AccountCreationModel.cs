@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.ComponentModel;
+using GatewayLibrary;
 
 namespace Engine.Models
 {
@@ -22,8 +23,8 @@ namespace Engine.Models
             username = null;
             password = null;
             accountValidationMessage = null;
-            passAccountCheck = true;
-            accountCreated = true;
+            passAccountCheck = false;
+            accountCreated = false;
         }
 
         public string Username
@@ -100,7 +101,7 @@ namespace Engine.Models
             }
         }
 
-        public void ValidatePassword()
+        public bool ValidatePassword()
         {
 
             if (Password == null || Password.Trim().Length == 0)
@@ -142,15 +143,25 @@ namespace Engine.Models
             if (PasswordValidationMessage == null)
             {
                 PasswordValidationMessage = "\u2022 Password is acceptable. \n";
-                AccountCheck = true;
-                AccountCreated = true;
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public void ValidateUsername()
+        public bool ValidateUsername()
         {
-
-            if (Username == null || Username.Trim().Length == 0)
+            //check account database for existing username
+            AccountDatabase database = new AccountDatabase();
+            database.OpenConnection();
+            //if there is an existing account, update the validation message
+            if(database.LookUpAccountRecord(Username, Password).ErrorString != "no record found")
+            {
+                usernameValidationMessage = "\u2022 Username already exists. \n";
+            }
+            else if (Username == null || Username.Trim().Length == 0)
             {
                 UsernameValidationMessage = "\u2022 Username cannot be empty. \n";
             }
@@ -170,18 +181,44 @@ namespace Engine.Models
                     UsernameValidationMessage += "\u2022 Username cannot contain spaces. \n";
                 }
             }
+            //close connection to account database
+            database.CloseConnection();
+            //if username has not been disqualified send an acceptable message
             if (UsernameValidationMessage == null)
             {
                 UsernameValidationMessage = "\u2022 Username is acceptable. \n";
+                return true;
+            }
+            else
+            {
+                return false;
             }
         }
 
-        public void ValidateFinalAccountMessage()
+        public void ValidateAccount()
         {
-            this.ValidateUsername();
-            this.ValidatePassword();
+            bool usernameCheck = this.ValidateUsername();
+            bool passwordCheck = this.ValidatePassword();
             AccountValidationMessage = UsernameValidationMessage + PasswordValidationMessage;
+            AccountCheck = usernameCheck && passwordCheck;
+        }
 
+        public void CreateAccount()
+        {
+            //open a connection to the account database
+            AccountDatabase database = new AccountDatabase();
+            database.OpenConnection();
+            //send the request to generate a new account and store result in accountCreated property
+            AccountRecord newlyCreatedAccount = new AccountRecord();
+            newlyCreatedAccount.Username = Username;
+            AccountCreated = database.AddAccountRecord(newlyCreatedAccount, Password);
+            //close connection to the account database
+            database.CloseConnection();
+            AccountCreated = true;
+            if (AccountCheck && AccountCreated)
+            {
+                AccountValidationMessage = "\u2022 Account created.  Log in to play!";
+            }
         }
     }
 

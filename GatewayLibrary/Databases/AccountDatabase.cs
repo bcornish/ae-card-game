@@ -10,7 +10,7 @@ namespace GatewayLibrary
     public class AccountDatabase : GameDatabase
     {
         //check to see whether a username/password combination exists in the database
-        public AccountRecord CheckAccountVsDatabase(string userName, string password)
+        public AccountRecord LookUpAccountRecord(string userName, string password)
         {
             AccountRecord accountRecord = new AccountRecord();
             //send a sql query asking for a record that matches an entry in AccountTable with the specified username
@@ -46,7 +46,7 @@ namespace GatewayLibrary
         {
             //Look for existing username in database
             AccountRecord existingAccountRecord = new AccountRecord();
-            existingAccountRecord = CheckAccountVsDatabase(accountRecord.Username, null);
+            existingAccountRecord = LookUpAccountRecord(accountRecord.Username, null);
             if (existingAccountRecord.ErrorString != "no record found")
             {
                 return true;

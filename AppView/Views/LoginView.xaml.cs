@@ -28,10 +28,10 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
-
+        
         private void OnClick_Login(object sender, RoutedEventArgs e)
         {
-            viewModel.LoginToAccount();
+            viewModel.LoginToAccount(userPassword.SecurePassword);
         }
     }
 }
