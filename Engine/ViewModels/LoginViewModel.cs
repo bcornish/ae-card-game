@@ -58,7 +58,7 @@ namespace Engine.ViewModels
         }*/
         public bool LoginValidated
         {
-            get { return ! Model.LoginCompleted; }
+            get { return Model.LoginCompleted; }
         }
         public string Username
         {
