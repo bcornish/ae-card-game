@@ -48,15 +48,20 @@ namespace Engine.ViewModels
 
         public ICommand loginClick
         {
-            get
-            {
-                return Command;
-            }
+            get{ return Command;}
         }
 
         public bool LoginValidated
         {
             get { return ! Model.LoginCompleted; }
+        }
+        public string Username
+        {
+            get { return Model.Username; }
+        }
+        public string Password
+        {
+            get { return Model.Password; }
         }
         #endregion
 

@@ -18,8 +18,8 @@ namespace Engine.Models
 
         public LoginModel()
         {
-            username = null;
-            password = null;
+            username = "username";
+            password = "password";
             accountValidationMessage = null;
             loginSuccess = true;
         }

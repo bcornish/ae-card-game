@@ -33,5 +33,41 @@ namespace MainWindow.Views
         {
             viewModel.LoginToAccount();
         }
+        private void Username_GotFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "username")
+            {
+                tb.Text = "";
+                tb.Foreground = Brushes.Black;
+            }
+        }
+        private void Username_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "username";
+                tb.Foreground = Brushes.LightGray;
+            }
+        }
+        private void Password_GotFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "password")
+            {
+                tb.Text = "";
+                tb.Foreground = Brushes.Black;
+            }
+        }
+        private void Password_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "password";
+                tb.Foreground = Brushes.LightGray;
+            }
+        }
     }
 }

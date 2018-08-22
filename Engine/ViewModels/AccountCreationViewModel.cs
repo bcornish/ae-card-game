@@ -13,7 +13,8 @@ namespace Engine.ViewModels
         
         public AccountCreationModel NewAccount { get; set;}
         private ButtonCommand ValidateCommand;
-        
+        private ButtonCommand CreateCommand;
+
         #region Constructor
         public AccountCreationViewModel()
         {
