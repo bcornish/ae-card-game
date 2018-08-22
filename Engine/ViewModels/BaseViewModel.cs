@@ -20,30 +20,30 @@ namespace Engine.ViewModels
             }
         }
 
-        public class RelayCommand : ICommand
-        {
-            private BaseViewModel _viewModel;
+        //public class RelayCommand : ICommand
+        //{
+        //    private BaseViewModel _viewModel;
 
-            public RelayCommand(BaseViewModel action)
-            {
-                _viewModel = action;
-            }
+        //    public RelayCommand(BaseViewModel action)
+        //    {
+        //        _viewModel = action;
+        //    }
 
-            #region ICommand Members
+        //    #region ICommand Members
 
-            public bool CanExecute(object parameter)
-            {
-                return true;
-            }
+        //    public bool CanExecute(object parameter)
+        //    {
+        //        return true;
+        //    }
 
-            public event EventHandler CanExecuteChanged;
+        //    public event EventHandler CanExecuteChanged;
 
-            public virtual void Execute(object parameter)
-            {
+        //    public virtual void Execute(object parameter)
+        //    {
 
-            }
-            #endregion
-        }
+        //    }
+        //    #endregion
+        //}
         //Generalized Command class for buttons for binding
         public class ButtonCommand : ICommand
         {
@@ -92,6 +92,21 @@ namespace Engine.ViewModels
             }
         }
 
+        public object selectedViewModel;
+        public object SelectedViewModel
+        {
+            get { return selectedViewModel; }
+            set
+            {
+                selectedViewModel = value;
+
+                NotifyPropertyChanged(nameof(SelectedViewModel));
+            }
+        }
+        protected void OpenAny<T>() where T : new()
+        {
+            SelectedViewModel = new T();
+        }
     }
 
 }

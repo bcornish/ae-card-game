@@ -35,6 +35,8 @@
         </TextBlock>
         <TextBox Grid.Row="0"
                    Text="{Binding Model.Username}"
+                   GotFocus="Username_GotFocus"
+                   LostFocus="Username_LostFocus"
                    Width="200"
                    HorizontalAlignment="Center"
                    Visibility="Visible"

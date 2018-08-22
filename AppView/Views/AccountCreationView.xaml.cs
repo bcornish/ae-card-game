@@ -33,12 +33,12 @@ namespace MainWindow.Views
         //this is necessary as plain text value is not available for password box, and bindings don't work
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.CreateAccount(userPassword.SecurePassword);
+            //viewModel.CreateAccount(userPassword.SecurePassword);
         }
 
         private void ValidateButton_Click(object sender, RoutedEventArgs e)
         {
-            viewModel.ValidateAccount(userPassword.SecurePassword);
+            //viewModel.ValidateAccount(userPassword.SecurePassword);
         }
         /*
 * Replaced with bindings

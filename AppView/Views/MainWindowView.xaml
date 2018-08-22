@@ -14,6 +14,9 @@
         <DataTemplate DataType="{x:Type viewModels:AccountCreationViewModel}">
             <views:AccountCreationView/>
         </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:StartPlayViewModel}">
+            <views:StartPlayView/>
+        </DataTemplate>
     </Window.Resources>
 
     <Window.DataContext>
@@ -25,7 +28,7 @@
             <StackPanel Orientation="Horizontal" Height="35" VerticalAlignment="Top">
                 <Button Content="Create Account" MinWidth="100" Command="{Binding AccountClick}"/>
                 <Button Content="Login" MinWidth="100" Margin="10,0,0,0" Command="{Binding LoginClick}"/>
-                <Button Content="Play" MinWidth="100" Margin="10,0,0,0" Command="{Binding PlayClick}" IsEnabled="{Binding LoginValidated}"/>
+                <Button Content="Home" MinWidth="100" Margin="10,0,0,0" Command="{Binding HomeClick}" IsEnabled="{Binding LoginValidated}"/>
             </StackPanel>
             <Frame x:Name="Main" Content="{Binding SelectedViewModel}" Margin="0,35,0,0" NavigationUIVisibility="Hidden"/>
         </StackPanel>

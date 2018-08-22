@@ -14,14 +14,13 @@ namespace Engine.ViewModels
         public AccountCreationModel NewAccount { get; set;}
         private ButtonCommand ValidateCommand;
         private ButtonCommand CreateCommand;
-        
+
         #region Constructor
         public AccountCreationViewModel()
         {
             NewAccount = new AccountCreationModel();
-            //reverting to old method since passwordboxes don't have bindings, click event is called instead
-            //ValidateCommand = new ButtonCommand(this.ValidateAccount, true);
-            //CreateCommand = new ButtonCommand(this.CreateAccount, true);
+            ValidateCommand = new ButtonCommand(this.ValidateAccount, true);
+            CreateCommand = new ButtonCommand(this.CreateAccount, true);
         }
 
         #endregion
@@ -36,15 +35,15 @@ namespace Engine.ViewModels
             NewAccount.ValidateUsername();
         }
 
-        public void ValidateAccount(object parameter)
+        public void ValidateAccount()
         {
-            NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
+            //NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
             NewAccount.ValidateAccount();
         }
 
-        public void CreateAccount(object parameter)
+        public void CreateAccount()
         {
-            NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
+            //NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
             NewAccount.ValidateAccount();
             if (NewAccount.AccountCheck)
             {
@@ -56,7 +55,6 @@ namespace Engine.ViewModels
             return NewAccount.UsernameValidationMessage;
         }
         #endregion
-        /* can't use commands and bindings for login/account processes because passwordboxes don't have plain text
         public ICommand validateClick
         {
             get
@@ -71,6 +69,6 @@ namespace Engine.ViewModels
             {
                 return CreateCommand;
             }
-        }*/
+        }
     }
 }

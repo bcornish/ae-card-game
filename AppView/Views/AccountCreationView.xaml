@@ -36,19 +36,19 @@
                    HorizontalAlignment="Center"
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
-        <PasswordBox Name ="userPassword" Grid.Row="1"
+        <TextBox Name ="userPassword" Grid.Row="1"
+                   Text="{Binding NewAccount.Password}" 
                    Width="200"
                    HorizontalAlignment="Center"
                    Visibility="Visible"
-                   Padding="5" Margin="5"
-                   PasswordChar="●"/>
+                   Padding="5" Margin="5"/>
         <Button Grid.Row="2" Content="Check Account"
-                   Name="ValidateButton" Click="ValidateButton_Click"
+                   Command="{Binding validateClick}"
                    Width="200"
                    HorizontalAlignment="Center"
                    Padding="5" Margin="5"/>
         <Button Grid.Row="3" Content="Create Account"
-                   Name ="CreateButton" Click="CreateButton_Click"
+                   Command="{Binding createClick}"
                    Width="200"
                    HorizontalAlignment="Center"
                    Padding="5" Margin="5"/>
