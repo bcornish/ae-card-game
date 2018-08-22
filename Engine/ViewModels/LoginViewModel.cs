@@ -18,16 +18,17 @@ namespace Engine.ViewModels
         public LoginViewModel()
         {
             Model = new LoginModel();
-            Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
+            //removed to accomoodate passwordbox
+            //Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
         }
 
         #endregion
 
         #region Methods
 
-        public void LoginToAccount()
+        public void LoginToAccount(object parameter)
         {
-            //Model.Password = this.ConvertToUnsecureString(parameter as System.Security.SecureString);
+            Model.Password = this.ConvertToUnsecureString(parameter as System.Security.SecureString);
             Model.ValidateAccountAndLogin();
         }
         //public class LoginToAccountCommand : RelayCommand
@@ -47,13 +48,14 @@ namespace Engine.ViewModels
         //    }
         //}
 
+            /* removed to accomodate passwordbox
         public ICommand loginClick
         {
             get
             {
                 return Command;
             }
-        }
+        }*/
         public bool LoginValidated
         {
             get { return ! Model.LoginCompleted; }

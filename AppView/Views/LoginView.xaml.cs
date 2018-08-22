@@ -31,7 +31,8 @@ namespace MainWindow.Views
         
         private void OnClick_Login(object sender, RoutedEventArgs e)
         {
-            //viewModel.LoginToAccount(userPassword.SecurePassword);
+            //using an onclick method to address passwordbox limitations
+            viewModel.LoginToAccount(userPassword.SecurePassword);
         }
         private void Username_GotFocus(object sender, EventArgs e)
         {

@@ -41,16 +41,14 @@
                    HorizontalAlignment="Center"
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
-        <TextBox Grid.Row="1"
-                   Text="{Binding Model.Password}"
-                   GotFocus="Password_GotFocus"
-                   LostFocus="Password_LostFocus"
+        <PasswordBox Grid.Row="1"
+                   Name="userPassword"
                    Width="200"
                    HorizontalAlignment="Center"
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
         <Button Grid.Row="2" Content="Login"
-                   Command="{Binding loginClick}"
+                   Click="OnClick_Login"
                    Width="200"
                    HorizontalAlignment="Center"
                    Padding="5" Margin="5"/>

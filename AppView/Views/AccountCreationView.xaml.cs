@@ -29,16 +29,53 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
-        //makes the password from the passwordbox available as a secure string,
-        //this is necessary as plain text value is not available for password box, and bindings don't work
         private void CreateButton_Click(object sender, RoutedEventArgs e)
         {
+            //this implementation would be required for a passwordbox
             //viewModel.CreateAccount(userPassword.SecurePassword);
         }
 
         private void ValidateButton_Click(object sender, RoutedEventArgs e)
         {
+            //this implementation would be required for a passwordbox
             //viewModel.ValidateAccount(userPassword.SecurePassword);
+        }
+
+        private void Username_GotFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "username")
+            {
+                tb.Text = "";
+                tb.Foreground = Brushes.Black;
+            }
+        }
+        private void Username_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "username";
+                tb.Foreground = Brushes.LightGray;
+            }
+        }
+        private void Password_GotFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "password")
+            {
+                tb.Text = "";
+                tb.Foreground = Brushes.Black;
+            }
+        }
+        private void Password_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "password";
+                tb.Foreground = Brushes.LightGray;
+            }
         }
         /*
 * Replaced with bindings

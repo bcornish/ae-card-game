@@ -20,8 +20,8 @@ namespace Engine.Models
 
         public AccountCreationModel()
         {
-            username = null;
-            password = null;
+            username = "username";
+            password = "password";
             accountValidationMessage = null;
             passAccountCheck = false;
             accountCreated = false;

@@ -33,12 +33,16 @@
         <TextBox Grid.Row="0"
                    Text="{Binding NewAccount.Username}"
                    Width="200"
+                   GotFocus="Username_GotFocus"
+                   LostFocus="Username_LostFocus"
                    HorizontalAlignment="Center"
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
         <TextBox Name ="userPassword" Grid.Row="1"
                    Text="{Binding NewAccount.Password}" 
                    Width="200"
+                   GotFocus="Password_GotFocus"
+                   LostFocus="Password_LostFocus"
                    HorizontalAlignment="Center"
                    Visibility="Visible"
                    Padding="5" Margin="5"/>
