@@ -89,7 +89,7 @@ namespace Engine.Models
             database.CloseConnection();
             // Map CardRecord to CardBaseModel
             Name = record.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/{record.Type}.bmp";
+            ImageLocation = $"pack://application:,,,/Window;component/Images/Blank.bmp";
             Description = record.Description;
             DesiredContent = record.DesiredContent;
             SignalAmplitude = Convert.ToDecimal(record.SignalAmplitude);

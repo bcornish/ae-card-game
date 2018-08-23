@@ -126,7 +126,7 @@ namespace Engine.Models
             database.CloseConnection();
             // Map CardRecord to CardBaseModel
             Name = card.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/{card.Name}.bmp";
+            ImageLocation = $"pack://application:,,,/Window;component/Images/Blank.bmp";
             Description = card.Description;
             Cost = Convert.ToInt32(card.Cost);
             ADCType = card.ADCType;

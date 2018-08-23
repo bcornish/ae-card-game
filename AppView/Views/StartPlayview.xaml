@@ -8,7 +8,7 @@
       xmlns:tabControlViewModels="clr-namespace:Engine.ViewModels.TabControlVM;assembly=ClassLibrary1"
       xmlns:views="clr-namespace:MainWindow.Views"
       mc:Ignorable="d" 
-      d:DesignHeight="300" d:DesignWidth="300"
+      
       Title="StartPlayView">
 
     <Page.DataContext>
@@ -20,33 +20,29 @@
 
     </Page.Resources>
 
-    <Grid>
+    <DockPanel>
         <!--<StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button Content="View Deck" MinWidth="100" Command="{Binding ViewDeckClick}"/>
             <Button Content="Play" MinWidth="100" Margin="0,20,0,0" Command="{Binding PlayClick}"/>
         </StackPanel>-->
-        
-            
-        
-        <TabControl ItemsSource="{Binding Children}" SelectionChanged="TabControl_SelectionChanged">
-            <TabControl.ContentTemplate>
-                <DataTemplate DataType="{x:Type tabControlViewModels:TabControlViewModel}">
-                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
-                        <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
-                            <views:ViewDeckView />
-                        </Grid>
-                            
+     
 
-                    </ScrollViewer>
-                </DataTemplate>
-            </TabControl.ContentTemplate>
-            <TabControl.ItemContainerStyle>
-                <Style TargetType="{x:Type TabItem}">
-                    <Setter Property="Header" Value="{Binding Name}" />
-                </Style>
-            </TabControl.ItemContainerStyle>
-                
-        </TabControl>
+        <TabControl ItemsSource="{Binding Children}" SelectionChanged="TabControl_SelectionChanged">
+                <TabControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type tabControlViewModels:TabControlViewModel}">
+                        <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
+                            <Grid>
+                                <views:ViewDeckView />
+                            </Grid>
+                        </ScrollViewer>
+                    </DataTemplate>
+                </TabControl.ContentTemplate>
+                <TabControl.ItemContainerStyle>
+                    <Style TargetType="{x:Type TabItem}">
+                        <Setter Property="Header" Value="{Binding Name}" />
+                    </Style>
+                </TabControl.ItemContainerStyle>
+            </TabControl>
         
-    </Grid>
+    </DockPanel>
 </Page>
