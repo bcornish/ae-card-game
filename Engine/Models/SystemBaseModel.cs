@@ -7,6 +7,7 @@ using System.Threading.Tasks;
 namespace Engine.Models
 {
 <<<<<<< HEAD
+<<<<<<< HEAD
     public class SystemBaseModel: BaseModel
     {
         private string name;
@@ -73,6 +74,8 @@ namespace Engine.Models
             SystemRequirements = "Testing";
 
 =======
+=======
+>>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
     public class SystemBaseModel : BaseModel
     {
         public string Name { get; private set; }
@@ -93,6 +96,9 @@ namespace Engine.Models
             sensors.Add(dummySensor);
             sensors.Add(dummySensor);
             sensors.Add(dummySensor);
+<<<<<<< HEAD
+>>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
+=======
 >>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
         }
     }
