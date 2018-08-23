@@ -25,10 +25,19 @@
             <Button Content="View Deck" MinWidth="100" Command="{Binding ViewDeckClick}"/>
             <Button Content="Play" MinWidth="100" Margin="0,20,0,0" Command="{Binding PlayClick}"/>
         </StackPanel>-->
+        
+            
+        
         <TabControl ItemsSource="{Binding Children}" SelectionChanged="TabControl_SelectionChanged">
             <TabControl.ContentTemplate>
                 <DataTemplate DataType="{x:Type tabControlViewModels:TabControlViewModel}">
-                    <views:ViewDeckView />
+                    <ScrollViewer VerticalScrollBarVisibility="Visible" HorizontalScrollBarVisibility="Visible" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
+                        <Grid ScrollViewer.HorizontalScrollBarVisibility="Visible">
+                            <views:ViewDeckView />
+                        </Grid>
+                            
+
+                    </ScrollViewer>
                 </DataTemplate>
             </TabControl.ContentTemplate>
             <TabControl.ItemContainerStyle>
@@ -38,5 +47,6 @@
             </TabControl.ItemContainerStyle>
                 
         </TabControl>
+        
     </Grid>
 </Page>

@@ -6,7 +6,7 @@
         xmlns:viewModels="clr-namespace:Engine.ViewModels;assembly=ClassLibrary1"
         xmlns:views="clr-namespace:MainWindow.Views"
         mc:Ignorable="d"
-        Title="MainWindowView" Height="800" Width="600" ScrollViewer.VerticalScrollBarVisibility="Auto">
+        Title="MainWindowView" Height="800" Width="600" ScrollViewer.VerticalScrollBarVisibility="Auto" ScrollViewer.HorizontalScrollBarVisibility="Auto" WindowState="Maximized">
     <Window.Resources>
         <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
             <views:LoginView/>

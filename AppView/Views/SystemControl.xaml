@@ -1,11 +1,12 @@
-﻿<UserControl x:Class="MainWindow.Views.CardControl"
+﻿<UserControl x:Class="MainWindow.Views.SystemControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewmodels="clr-namespace:Engine.ViewModels;assembly=ClassLibrary1"
-             d:DataContext="{d:DesignInstance viewmodels:CardBaseViewModel}"
+             d:DataContext="{d:DesignInstance viewmodels:SystemBaseViewModel}"
              mc:Ignorable="d" RenderTransformOrigin="0.5,0.5">
+
     <UserControl.LayoutTransform>
         <TransformGroup>
             <ScaleTransform ScaleY="0.25" ScaleX="0.25"/>
@@ -14,11 +15,8 @@
             <TranslateTransform X="0.25" Y="0.25"/>
         </TransformGroup>
     </UserControl.LayoutTransform>
-
-
-    <Grid >
-
-
+    
+    <Grid>
         <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
             <Grid>
                 <Grid.RowDefinitions>
@@ -34,9 +32,9 @@
                 </Grid.ColumnDefinitions>
 
                 <Image Source="pack://application:,,,/Window;component/Blank Fake Card.bmp" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.ModuleNumber, TargetNullValue='Default'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.ModulePrice, TargetNullValue='Default'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.ModuleSpecs, TargetNullValue='Testing'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.SystemName, TargetNullValue='Hi'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.SystemPayout, TargetNullValue='Hii'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.SystemRequirements, TargetNullValue='HIIII'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>
             </Grid>
         </Border>
     </Grid>

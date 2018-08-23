@@ -46,6 +46,7 @@
     <Compile Include="Models\CardBaseModel.cs" />
     <Compile Include="Models\LoginModel.cs" />
     <Compile Include="Models\MainWindowModel.cs" />
+    <Compile Include="Models\SystemBaseModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\AccountCreationViewModel.cs" />
     <Compile Include="ViewModels\BaseViewModel.cs" />
@@ -54,6 +55,7 @@
     <Compile Include="ViewModels\MainWindowViewModel.cs" />
     <Compile Include="ViewModels\NavigationViewModel.cs" />
     <Compile Include="ViewModels\StartPlayViewModel.cs" />
+    <Compile Include="ViewModels\SystemBaseViewModel.cs" />
     <Compile Include="ViewModels\TabControlViewModel.cs" />
   </ItemGroup>
   <ItemGroup>

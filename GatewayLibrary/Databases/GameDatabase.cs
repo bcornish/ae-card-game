@@ -5,7 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 
-namespace GatewayLibrary
+namespace GatewayLibrary.Databases
 {
     /* The CardGameDatabase class connects 
      * to the SQL Server to send/receive information 
@@ -14,7 +14,8 @@ namespace GatewayLibrary
 
     public class GameDatabase
     {
-       protected SqlConnection databaseConnection { get; set; }
+        protected SqlConnection databaseConnection { get; set; }
+        protected string databaseTableName { get; set; }
 
         // Opens a connection to the SQL database
         public void OpenConnection()

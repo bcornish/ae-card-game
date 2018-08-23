@@ -90,8 +90,14 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Compile Include="Views\PlayGameView.xaml.cs">
+      <DependentUpon>PlayGameView.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Views\StartPlayView.xaml.cs">
       <DependentUpon>StartPlayView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SystemControl.xaml.cs">
+      <DependentUpon>SystemControl.xaml</DependentUpon>
     </Compile>
     <Compile Include="Views\ViewDeckView.xaml.cs">
       <DependentUpon>ViewDeckView.xaml</DependentUpon>
@@ -112,7 +118,15 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Views\PlayGameView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Views\StartPlayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SystemControl.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
