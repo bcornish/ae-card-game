@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace GatewayLibrary.Databases
 {
-    class SensorDatabase : GameDatabase
+    public class SensorDatabase : GameDatabase
     {
         public SensorDatabase()
         {

@@ -107,19 +107,6 @@ namespace Engine.Models
         public int SampleRate { get; private set; }
         public bool IsMultiplexed { get; private set; }
 
-        public void WriteDummyCardData()
-        {
-            Name = "NI 9215";
-            ImageLocation = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
-            Description = "This is a C Series Module.  It reads signals";
-            ADCType = "SAR";
-            SignalConditioning = "None"; // Could also be "Bridge Completion", "CJC", "IEPE"
-            TerminalConfig = "Differential"; // Could also be "Single-Ended"
-            MeasurementRange = 10;
-            SampleRate = 100000;
-            IsMultiplexed = false;
-        }
-
         public void MapCardRecordToModel(string name)
         {
             // Open Card Database
@@ -159,9 +146,9 @@ namespace Engine.Models
             return text;
 
         }
-        public void ImageSourceLookup()
+        public void ImageSourceLookup(string cardName)
         {
-            MapCardRecordToModel("NI 9210");
+            MapCardRecordToModel(cardName);
             ModulePrice = $"${Cost}";
             ModuleSpecs = GenerateModuleSpecsText();
 
