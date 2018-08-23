@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GatewayLibrary.Databases
 {
-    class CardDatabase
+    class CardDatabase : GameDatabase
     {
     }
 }
