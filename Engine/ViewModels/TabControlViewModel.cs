@@ -1,14 +1,21 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Collections.ObjectModel;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Engine.ViewModels.TabControlVM
 {
-   public class TabControlViewModel: BaseViewModel
+    public class TabControlViewModel : BaseViewModel
     {
 
+
+        public TabControlViewModel()
+        {
+
+        }
+    }
         public class ViewDeckViewModel:TabControlViewModel
         {
             
@@ -23,7 +30,7 @@ namespace Engine.ViewModels.TabControlVM
             }
         }
 
-        public class PlayViewModel
+        public class PlayViewModel: TabControlViewModel
         {
             public static string Name
             {
@@ -47,6 +54,17 @@ namespace Engine.ViewModels.TabControlVM
             {
                 get { return "Addresses Content"; }
             }
+        
+    }
+
+    public class ViewModel
+    {
+        public ViewModel()
+        {
+            Items.Add(new ViewDeckViewModel());
+            Items.Add(new PlayViewModel());
         }
+        public ObservableCollection<TabControlViewModel> Items { get; private set; }
+        = new ObservableCollection<TabControlViewModel>();
     }
 }

@@ -1,20 +1,31 @@
 ﻿<UserControl x:Class="MainWindow.Views.ViewDeckView"
+             
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModels="clr-namespace:Engine.ViewModels.TabControlVM;assembly=ClassLibrary1"
              xmlns:views="clr-namespace:MainWindow.Views"
-             d:DataContext="{d:DesignInstance viewModels:TabControlViewModel}"
+             d:DataContext="{d:DesignInstance viewModels:ViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="700" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
 
     <UserControl.Resources>
-        <DataTemplate DataType="{x:Type viewModels:TabControlViewModel}">
+        <DataTemplate DataType="{x:Type viewModels:PlayViewModel}">
             <Grid>
-                <views:SystemControl />
+                <ContentControl>
+                    <views:SystemControl />
+                </ContentControl>
+
             </Grid>
-           
+        </DataTemplate>
+        <DataTemplate DataType="{x:Type viewModels:ViewDeckViewModel}">
+            <Grid>
+                <ContentControl>
+                    <views:CardControl />
+                </ContentControl>
+
+            </Grid>
         </DataTemplate>
     </UserControl.Resources>
     
@@ -32,7 +43,7 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
         
-        <TextBlock Text="{Binding Content}" />
+        <!--<TextBlock Text="{Binding Content}" />-->
         <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}"/>
         <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding}" Margin="35,0,0,0" />
         <ContentControl Grid.Row="0" Grid.Column="2" Content="{Binding}" Margin="35,0,0,0" />

@@ -25,7 +25,7 @@ namespace MainWindow.Views
         public ViewDeckView()
         {
             InitializeComponent();
-            DataContext = viewModel;
+            //DataContext = viewModel;
         }
     }
 }

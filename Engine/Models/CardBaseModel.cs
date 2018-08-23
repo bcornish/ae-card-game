@@ -95,6 +95,15 @@ namespace Engine.Models
             }
         }
 
+        public void ImageSourceLookup()
+        {
+            //TODO: implement logic to look up cards
+
+            CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
+            ModuleNumber = "NI 9215";
+            ModulePrice = "$900";
+            ModuleSpecs = "Testing";
+        }
 
         public string Name { get; private set; }
         public string ImageLocation { get; private set; }
