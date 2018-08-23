@@ -71,10 +71,10 @@ namespace Engine.Models
 
         public void ValidateAccountAndLogin()
         {
-            //open connection to the account database
+            // Open connection to the Account Database
             AccountDatabase database = new AccountDatabase();
             database.OpenConnection();
-            //check whether the username/password combination is valid or not
+            // Check whether the username/password combination is valid or not
             AccountRecord loginAccount = database.LookUpAccountRecord(Username, Password);
             if (loginAccount.ErrorString == "valid record")
             {

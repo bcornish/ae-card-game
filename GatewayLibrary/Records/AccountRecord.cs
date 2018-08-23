@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace GatewayLibrary
 {
-    //class containing account record information
+    // Class containing account record information
     public class AccountRecord
     {
         public string Username { get; set; }

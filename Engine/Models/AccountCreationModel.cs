@@ -153,10 +153,10 @@ namespace Engine.Models
 
         public bool ValidateUsername()
         {
-            //check account database for existing username
+            // Check account database for existing username
             AccountDatabase database = new AccountDatabase();
             database.OpenConnection();
-            //if there is an existing account, update the validation message
+            // If there is an existing account, update the validation message
             if(database.LookUpAccountRecord(Username, Password).ErrorString != "no record found")
             {
                 usernameValidationMessage = "\u2022 Username already exists. \n";
@@ -181,9 +181,9 @@ namespace Engine.Models
                     UsernameValidationMessage += "\u2022 Username cannot contain spaces. \n";
                 }
             }
-            //close connection to account database
+            // Close connection to Account Database
             database.CloseConnection();
-            //if username has not been disqualified send an acceptable message
+            // If username has not been disqualified, send an "acceptable" message
             if (UsernameValidationMessage == null)
             {
                 UsernameValidationMessage = "\u2022 Username is acceptable. \n";
@@ -205,14 +205,14 @@ namespace Engine.Models
 
         public void CreateAccount()
         {
-            //open a connection to the account database
+            // Open a connection to the Account Database
             AccountDatabase database = new AccountDatabase();
             database.OpenConnection();
-            //send the request to generate a new account and store result in accountCreated property
+            // Send the request to generate a new account and store result in accountCreated property
             AccountRecord newlyCreatedAccount = new AccountRecord();
             newlyCreatedAccount.Username = Username;
             AccountCreated = database.AddAccountRecord(newlyCreatedAccount, Password);
-            //close connection to the account database
+            // Close connection to the Account Database
             database.CloseConnection();
             AccountCreated = true;
             if (AccountCheck && AccountCreated)

@@ -18,7 +18,7 @@ namespace Engine.ViewModels
         public LoginViewModel()
         {
             Model = new LoginModel();
-            //removed to accomoodate passwordbox
+            // Removed Command function to accommodate PasswordBox and the SecureString
             //Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
         }
 
@@ -31,24 +31,8 @@ namespace Engine.ViewModels
             Model.Password = this.ConvertToUnsecureString(parameter as System.Security.SecureString);
             Model.ValidateAccountAndLogin();
         }
-        //public class LoginToAccountCommand : RelayCommand
-        //{
-        //    private LoginViewModel viewModel;
-        //    public LoginToAccountCommand(LoginViewModel VM): base(VM)
-        //    {
-        //        viewModel = VM;
-        //    }
-        //    public new bool CanExecute(object parameter)
-        //    {
-        //        return true;
-        //    }
-        //    public override void Execute(object parameter)
-        //    {
-        //        viewModel.LoginToAccount();
-        //    }
-        //}
 
-            /* removed to accomodate passwordbox
+            /* Removed Command function to accommodate PasswordBox and the SecureString 
         public ICommand loginClick
         {
             get
@@ -56,9 +40,10 @@ namespace Engine.ViewModels
                 return Command;
             }
         }*/
+
         public bool LoginValidated
         {
-            get { return ! Model.LoginCompleted; }
+            get { return Model.LoginCompleted; }
         }
         public string Username
         {

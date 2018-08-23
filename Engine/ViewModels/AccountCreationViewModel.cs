@@ -37,13 +37,11 @@ namespace Engine.ViewModels
 
         public void ValidateAccount()
         {
-            //NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
             NewAccount.ValidateAccount();
         }
 
         public void CreateAccount()
         {
-            //NewAccount.Password = ConvertToUnsecureString(parameter as System.Security.SecureString);
             NewAccount.ValidateAccount();
             if (NewAccount.AccountCheck)
             {

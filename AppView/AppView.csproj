@@ -93,6 +93,9 @@
     <Compile Include="Views\StartPlayView.xaml.cs">
       <DependentUpon>StartPlayView.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Views\ViewDeckView.xaml.cs">
+      <DependentUpon>ViewDeckView.xaml</DependentUpon>
+    </Compile>
     <Page Include="Views\AccountCreationView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -110,6 +113,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Views\StartPlayView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ViewDeckView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

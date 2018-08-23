@@ -20,15 +20,15 @@ namespace MainWindow.Views
     /// </summary>
     public partial class MainWindowView : Window
     {
-        private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
+        //private readonly MainWindowViewModel viewModel = new MainWindowViewModel();
 
-        private readonly NavigationViewModel viewModel1 = new NavigationViewModel();
+        private readonly NavigationViewModel viewModel = new NavigationViewModel();
 
         public MainWindowView()
         {
             InitializeComponent();
 
-            DataContext = viewModel1;
+            DataContext = viewModel;
         }
 
         //private void Button_Click_Create_Account(object sender, RoutedEventArgs e)

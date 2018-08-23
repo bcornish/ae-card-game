@@ -9,20 +9,21 @@ namespace GatewayLibrary
 {
     public class AccountDatabase : GameDatabase
     {
-        //check to see whether a username/password combination exists in the database
+        #region Public Methods
+        // Check to see whether a username/password combination exists in the Account Database
         public AccountRecord LookUpAccountRecord(string userName, string password)
         {
             AccountRecord accountRecord = new AccountRecord();
-            //send a sql query asking for a record that matches an entry in AccountTable with the specified username
+            // Send a SQL query asking for a record that matches the Username in AccountRecord
             string findCommandText = $"SELECT * FROM AccountTable WHERE Username = '{userName}';";
             SqlCommand findCommand = new SqlCommand(findCommandText, databaseConnection);
             try
             {
-                //read the account that matches the username request
+                // Read the account that matches the Username request
                 using (SqlDataReader accountReader = findCommand.ExecuteReader())
                 {
                     accountReader.Read();
-                    //store account data from SQL record in the AccountRecord object
+                    // Store all account data from the acquired SQL record in the AccountRecord object
                     accountRecord.Username = accountReader["Username"].ToString();
                     accountRecord.Salt = accountReader["Salt"].ToString();
                     accountRecord.SaltedHash = accountReader["SaltedHash"].ToString();
@@ -36,7 +37,7 @@ namespace GatewayLibrary
             }
             catch (Exception e)
             {
-                //if no record found, return an empty object with error message labeled "No record found"
+                // If no record is found, return an empty object with error message labeled "No record found"
                 accountRecord = new AccountRecord();
                 accountRecord.ErrorString = "no record found";
             }
@@ -44,7 +45,7 @@ namespace GatewayLibrary
         }
         public bool AddAccountRecord(AccountRecord accountRecord, string password)
         {
-            //Look for existing username in database
+            // Make sure there is not an existing Username in Account Database
             AccountRecord existingAccountRecord = new AccountRecord();
             existingAccountRecord = LookUpAccountRecord(accountRecord.Username, null);
             if (existingAccountRecord.ErrorString != "no record found")
@@ -53,11 +54,11 @@ namespace GatewayLibrary
             }
             else
             {
-                //Generate a salt for the account
+                // Generate a salt for the account
                 accountRecord.Salt = GenerateSalt();
-                //Generate Salted Hash from Password
+                // Generate Salted Hash from Password and Salt
                 accountRecord.SaltedHash = GeneratePasswordHash(password, accountRecord.Salt);
-                //build SQL Command String from AccountRecord class
+                // build SQL Command String to send new record to SQL
                 string insertCommandText = $"INSERT INTO AccountTable (Username, Salt, SaltedHash) " +
                                            $"VALUES ('{accountRecord.Username}','{accountRecord.Salt}','{accountRecord.SaltedHash}');";
                 try
@@ -66,46 +67,39 @@ namespace GatewayLibrary
                 }
                 catch (Exception e)
                 {
-                    Console.WriteLine(e.ToString());
+                    //TODO: Determine whether any additional error reporting is necessary
                     return true;
                 }
                 return false;
             }
         }
 
+        public void ChangeAccountRecordPassword()
+        {
+            //TODO: pull the Username, generate a new hash and store it
+        }
+#endregion
+
+        #region Private Methods
         private static string GenerateSalt()
         {
             RNGCryptoServiceProvider rng = new RNGCryptoServiceProvider();
             byte[] saltArray = new byte[3];
             rng.GetBytes(saltArray);
-            //return a string version of the random number generated as salt
+            // Return a string version of the random number generated as salt
             return Convert.ToBase64String(saltArray);
         }
         private static string GeneratePasswordHash(string password, string salt)
         {
             HashAlgorithm algorithm = new SHA256Managed();
-            //combine salt and password
+            // Combine the salt and password
             string saltAndPassword = String.Concat(password, salt);
-            //generate hash
+            // Generate the salted hash
             byte[] saltAndPasswordBytes = Encoding.ASCII.GetBytes(saltAndPassword);
             byte[] passwordHashBytes = algorithm.ComputeHash(saltAndPasswordBytes);
-            //return a string version of the generated hash
+            // Return a string version of the generated hash
             return Convert.ToBase64String(passwordHashBytes);
         }
-
-        public void ChangeAccountRecordPassword()
-        {
-            //pull the salt and user, generate a new hash and store it
-        }
-
-        private void FindAccountRecord()
-        {
-            //returns an account record for use elsewhere
-        }
-
-        private void ComparePassword(AccountRecord accountRecord, string password)
-        {
-            //pulls the hash and salt from the account record and compares it to the string
-        }
+        #endregion
     }
 }
