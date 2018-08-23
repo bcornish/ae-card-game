@@ -9,6 +9,7 @@ namespace GatewayLibrary.Records
     public class CardRecord : GameElementRecord
     {
 
+        public string Cost { get; set; }
         public string ADCType { get; set; }
         public string SignalConditioning { get; set; }
         public string TerminalConfig { get; set; }
