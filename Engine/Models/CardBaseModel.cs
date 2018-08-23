@@ -93,7 +93,7 @@ namespace Engine.Models
  
             CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
             ModuleNumber = "NI 9215";
-            ModulePrice = "$700";
+            ModulePrice = "$900";
             ModuleSpecs = "Testing";
                        
     }

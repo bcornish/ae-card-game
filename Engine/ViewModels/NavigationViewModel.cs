@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Input;
+using Engine.ViewModels;
 
 
 namespace Engine.ViewModels
@@ -19,6 +20,7 @@ namespace Engine.ViewModels
         #region Constructor
         public NavigationViewModel()
         {
+
             LoginCommand = new ButtonCommand(OpenAny<LoginViewModel>, this.selected);
             AccountCommand = new ButtonCommand(OpenAny<AccountCreationViewModel>, this.selected);
             HomeCommand = new ButtonCommand(OpenAny<StartPlayViewModel>, this.selected);
@@ -41,4 +43,5 @@ namespace Engine.ViewModels
             get { return HomeCommand; }
         }
     }
+
 }

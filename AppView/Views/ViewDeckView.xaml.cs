@@ -12,26 +12,20 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using Engine.ViewModels;
+using Engine.ViewModels.TabControlVM;
 
 namespace MainWindow.Views
 {
     /// <summary>
-    /// Interaction logic for StartPlayview.xaml
+    /// Interaction logic for ViewDeckView.xaml
     /// </summary>
-    public partial class StartPlayView : Page
+    public partial class ViewDeckView : UserControl
     {
-        private readonly StartPlayViewModel viewModel = new StartPlayViewModel();
-        public StartPlayView()
+        private readonly TabControlViewModel viewModel = new TabControlViewModel();
+        public ViewDeckView()
         {
             InitializeComponent();
-
             DataContext = viewModel;
-        }
-
-        private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
-        {
-
         }
     }
 }

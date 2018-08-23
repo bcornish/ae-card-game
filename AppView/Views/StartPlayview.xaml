@@ -5,27 +5,38 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:MainWindow.Views"
       xmlns:viewModels="clr-namespace:Engine.ViewModels;assembly=ClassLibrary1"
+      xmlns:tabControlViewModels="clr-namespace:Engine.ViewModels.TabControlVM;assembly=ClassLibrary1"
       xmlns:views="clr-namespace:MainWindow.Views"
       mc:Ignorable="d" 
       d:DesignHeight="300" d:DesignWidth="300"
       Title="StartPlayView">
 
+    <Page.DataContext>
+        <tabControlViewModels:TabControlViewModel />
+    </Page.DataContext>
+
     <Page.Resources>
-        <DataTemplate DataType="{x:Type viewModels:LoginViewModel}">
-            <views:LoginView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:AccountCreationViewModel}">
-            <views:AccountCreationView/>
-        </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:StartPlayViewModel}">
-            <views:StartPlayView/>
-        </DataTemplate>
+
+
     </Page.Resources>
 
     <Grid>
-        <StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" >
+        <!--<StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button Content="View Deck" MinWidth="100" Command="{Binding ViewDeckClick}"/>
             <Button Content="Play" MinWidth="100" Margin="0,20,0,0" Command="{Binding PlayClick}"/>
-        </StackPanel>
+        </StackPanel>-->
+        <TabControl ItemsSource="{Binding Children}" SelectionChanged="TabControl_SelectionChanged">
+            <TabControl.ContentTemplate>
+                <DataTemplate DataType="{x:Type tabControlViewModels:TabControlViewModel}">
+                    <views:ViewDeckView />
+                </DataTemplate>
+            </TabControl.ContentTemplate>
+            <TabControl.ItemContainerStyle>
+                <Style TargetType="{x:Type TabItem}">
+                    <Setter Property="Header" Value="{Binding Name}" />
+                </Style>
+            </TabControl.ItemContainerStyle>
+                
+        </TabControl>
     </Grid>
 </Page>
