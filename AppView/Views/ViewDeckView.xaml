@@ -12,7 +12,7 @@
     <UserControl.Resources>
         <DataTemplate DataType="{x:Type viewModels:TabControlViewModel}">
             <Grid>
-                <views:SystemControl />
+                <views:CardControl />
             </Grid>
            
         </DataTemplate>

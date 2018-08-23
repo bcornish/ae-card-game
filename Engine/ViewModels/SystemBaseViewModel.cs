@@ -15,6 +15,7 @@ namespace Engine.ViewModels
         public SystemBaseViewModel()
         {
             Model = new SystemBaseModel();
+            Model.ImageSourceLookup(); // this should be removed, it's just for my testing
         }
 
         #endregion

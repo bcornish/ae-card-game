@@ -67,7 +67,7 @@ namespace Engine.Models
         {
             //TODO: implement logic to look up cards
 
-            SystemBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
+            SystemBaseImage = "pack://application:,,,/Window;component/Images/NI 9215.bmp";
             SystemName = "NI 9215";
             SystemPayout = "$900";
             SystemRequirements = "Testing";

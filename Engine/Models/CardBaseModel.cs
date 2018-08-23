@@ -103,7 +103,7 @@ namespace Engine.Models
         public string ADCType { get; private set; }
         public string SignalConditioning { get; private set; }
         public string TerminalConfig { get; private set; }
-        public int MeasurementRange { get; private set; }
+        public decimal MeasurementRange { get; private set; }
         public int SampleRate { get; private set; }
         public bool IsMultiplexed { get; private set; }
 
@@ -124,17 +124,19 @@ namespace Engine.Models
         {
             // Open Card Database
             CardDatabase database = new CardDatabase();
+            database.OpenConnection();
             // Request CardRecord from Database
             CardRecord card = database.RequestCardByName(name);
+            database.CloseConnection();
             // Map CardRecord to CardBaseModel
             Name = card.Name;
-            ImageLocation = card.ImageLocation;
+            ImageLocation = $"pack://application:,,,/Window;component/Images/{card.Name}.bmp";
             Description = card.Description;
             Cost = Convert.ToInt32(card.Cost);
             ADCType = card.ADCType;
             SignalConditioning = card.SignalConditioning;
             TerminalConfig = card.TerminalConfig;
-            MeasurementRange = Convert.ToInt32(card.MeasurementRange);
+            MeasurementRange = Convert.ToDecimal(card.MeasurementRange);
             SampleRate = Convert.ToInt32(card.SampleRate);
             IsMultiplexed = (card.IsMultiplexed == "Yes");
         }
@@ -147,22 +149,19 @@ namespace Engine.Models
             {
                 samplingType = "Multiplexed";
             }
-            text = $"Description: {Description}\n" +
-                   $"ADC Type: {ADCType}\n" +
+            text = $"ADC Type: {ADCType}\n" +
                    $"Signal Conditioning: {SignalConditioning}\n" +
                    $"TerminalConfig: {TerminalConfig}\n" +
                    $"Measurement Range: ±{MeasurementRange} V\n" +
                    $"Sample Rate: {SampleRate} Hz\n" +
-                   $"Sampling Architecture: {samplingType}\n";
+                   $"Sampling Architecture: {samplingType}\n\n" +
+                   $"\"{Description}\"\n";
             return text;
 
         }
         public void ImageSourceLookup()
         {
-            MapCardRecordToModel("NI 9215");
-            CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
-            //"pack://application:,,,/Window;component/Blank Fake Card.bmp"
-            ModuleNumber = Name;
+            MapCardRecordToModel("NI 9210");
             ModulePrice = $"${Cost}";
             ModuleSpecs = GenerateModuleSpecsText();
 

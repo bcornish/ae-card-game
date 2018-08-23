@@ -16,6 +16,7 @@ namespace Engine.ViewModels
         public CardBaseViewModel()
         {
             Model = new CardBaseModel();
+            Model.ImageSourceLookup(); // this should be removed, it's just for my testing
         }
 
         #endregion
