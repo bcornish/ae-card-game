@@ -6,8 +6,7 @@ using System.Threading.Tasks;
 
 namespace Engine.Models
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
+
     public class SystemBaseModel: BaseModel
     {
         private string name;
@@ -72,34 +71,27 @@ namespace Engine.Models
             SystemName = "NI 9215";
             SystemPayout = "$900";
             SystemRequirements = "Testing";
-
-=======
-=======
->>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
-    public class SystemBaseModel : BaseModel
-    {
-        public string Name { get; private set; }
-        public string ImageLocation { get; private set; }
-        public string Description { get; private set; }
-        public string DesiredContent { get; private set; }
-        public List<SubSystems.Sensor> sensors { get; private set; }
-
-        public void CreateDummyRequirements()
-        {
-            Name = "Dummy System";
-            ImageLocation = "C:/fake/location";
-            Description = "This system is super easy!";
-            DesiredContent = "FFT (Frequency Data)"; // Could also be "Signal Waveform (Time Domain)"
-
-            SubSystems.Sensor dummySensor = new SubSystems.Sensor();
-            dummySensor.WriteDummySensorProperties();
-            sensors.Add(dummySensor);
-            sensors.Add(dummySensor);
-            sensors.Add(dummySensor);
-<<<<<<< HEAD
->>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
-=======
->>>>>>> 59d8ea72502cb6bca713449a8ceb76bf49426dd8
         }
+    //public class SystemBaseModel : BaseModel
+    //{
+    //    public string Name { get; private set; }
+    //    public string ImageLocation { get; private set; }
+    //    public string Description { get; private set; }
+    //    public string DesiredContent { get; private set; }
+    //    public List<SubSystems.Sensor> sensors { get; private set; }
+
+    //    public void CreateDummyRequirements()
+    //    {
+    //        Name = "Dummy System";
+    //        ImageLocation = "C:/fake/location";
+    //        Description = "This system is super easy!";
+    //        DesiredContent = "FFT (Frequency Data)"; // Could also be "Signal Waveform (Time Domain)"
+
+    //        SubSystems.Sensor dummySensor = new SubSystems.Sensor();
+    //        dummySensor.WriteDummySensorProperties();
+    //        sensors.Add(dummySensor);
+    //        sensors.Add(dummySensor);
+    //        sensors.Add(dummySensor);
+    //    }
     }
 }
