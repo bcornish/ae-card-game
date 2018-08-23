@@ -124,8 +124,9 @@ namespace Engine.Models
         {
             // Open Card Database
             CardDatabase database = new CardDatabase();
-            // Request
+            // Request CardRecord from Database
             CardRecord card = database.RequestCardByName(name);
+            // Map CardRecord to CardBaseModel
             Name = card.Name;
             ImageLocation = card.ImageLocation;
             Description = card.Description;
@@ -154,6 +155,17 @@ namespace Engine.Models
                    $"Sample Rate: {SampleRate} Hz\n" +
                    $"Sampling Architecture: {samplingType}\n";
             return text;
+
+        }
+        public void ImageSourceLookup()
+        {
+            MapCardRecordToModel("NI 9215");
+            CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
+            //"pack://application:,,,/Window;component/Blank Fake Card.bmp"
+            ModuleNumber = Name;
+            ModulePrice = $"${Cost}";
+            ModuleSpecs = GenerateModuleSpecsText();
+
         }
     }
 }
