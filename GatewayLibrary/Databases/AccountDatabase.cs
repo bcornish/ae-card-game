@@ -5,7 +5,9 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Data.SqlClient;
 using System.Security.Cryptography;
-namespace GatewayLibrary
+using GatewayLibrary.Records;
+
+namespace GatewayLibrary.Databases
 {
     public class AccountDatabase : GameDatabase
     {
