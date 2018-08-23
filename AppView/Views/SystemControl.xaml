@@ -31,10 +31,10 @@
                     <ColumnDefinition Width="Auto"/>
                 </Grid.ColumnDefinitions>
 
-                <Image Source="pack://application:,,,/Window;component/Blank Fake Card.bmp" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.SystemName, TargetNullValue='Hi'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.SystemPayout, TargetNullValue='Hii'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.SystemRequirements, TargetNullValue='HIIII'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>
+                <Image Source="{Binding Model.SystemBaseImage, TargetNullValue='pack://application:,,,/Window;component/Images/Blank.bmp'}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
+                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.SystemName, TargetNullValue='No Device'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
+                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.SystemPayout, TargetNullValue='Sensor'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
+                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.SystemRequirements, TargetNullValue='No requirements listed'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>
             </Grid>
         </Border>
     </Grid>

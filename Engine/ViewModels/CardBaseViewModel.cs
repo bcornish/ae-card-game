@@ -16,6 +16,7 @@ namespace Engine.ViewModels
         public CardBaseViewModel()
         {
             Model = new CardBaseModel();
+            Model.ImageSourceLookup("NI 9215"); // this should be removed, it's just for my testing
         }
 
         #endregion
@@ -24,7 +25,7 @@ namespace Engine.ViewModels
 
         public void ImageSource()
         {
-            Model.ImageSourceLookup();
+            Model.ImageSourceLookup("NI 9215");
         }
         #endregion
 

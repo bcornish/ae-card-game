@@ -15,6 +15,7 @@ namespace Engine.ViewModels
         public SystemBaseViewModel()
         {
             Model = new SystemBaseModel();
+            Model.ImageSourceLookup("Temperature"); // this should be removed, it's just for my testing
         }
 
         #endregion
@@ -23,7 +24,7 @@ namespace Engine.ViewModels
 
         public void ImageSource()
         {
-            Model.ImageSourceLookup();
+            Model.ImageSourceLookup("Temperature");
         }
         #endregion
 

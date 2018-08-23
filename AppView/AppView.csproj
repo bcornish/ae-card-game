@@ -188,6 +188,23 @@
   <ItemGroup>
     <Resource Include="Blank Fake Card.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Heartbeat Sensor.bmp" />
+    <Resource Include="Images\IEPE Microphone.bmp" />
+    <Resource Include="Images\NI 9202.bmp" />
+    <Resource Include="Images\NI 9210.bmp" />
+    <Resource Include="Images\NI 9215.bmp" />
+    <Resource Include="Images\NI 9221.bmp" />
+    <Resource Include="Images\NI 9234.bmp" />
+    <Resource Include="Images\NI 9237.bmp" />
+    <Resource Include="Images\Potentiometer.bmp" />
+    <Resource Include="Images\Strain Gauge.bmp" />
+    <Resource Include="Images\Tacho-generator.bmp" />
+    <Resource Include="Images\Thermocouple.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Blank.bmp" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -9,6 +9,7 @@ namespace GatewayLibrary.Records
     public class SensorRecord : GameElementRecord
     {
 
+        public string DesiredContent { get; set; }
         public string SignalAmplitude { get; set; }
         public string SignalFrequency { get; set; }
         public string Type { get; set; }

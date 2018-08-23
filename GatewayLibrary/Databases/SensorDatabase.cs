@@ -8,7 +8,7 @@ using System.Data.SqlClient;
 
 namespace GatewayLibrary.Databases
 {
-    class SensorDatabase : GameDatabase
+    public class SensorDatabase : GameDatabase
     {
         public SensorDatabase()
         {
@@ -67,6 +67,7 @@ namespace GatewayLibrary.Databases
             record.Name = sqlReader["Name"].ToString();
             record.ImageLocation = sqlReader["ImageLocation"].ToString();
             record.Description = sqlReader["Description"].ToString();
+            record.DesiredContent = sqlReader["DesiredContent"].ToString();
             record.SignalAmplitude = sqlReader["SignalAmplitude"].ToString();
             record.SignalFrequency = sqlReader["SignalFrequency"].ToString();
             record.Type = sqlReader["Type"].ToString();
@@ -76,9 +77,9 @@ namespace GatewayLibrary.Databases
         private string ConvertRecordToSQLCommand(SensorRecord record)
         {
             string commandText = $"INSERT INTO {databaseTableName} (Name, ImageLocation, Description, SignalAmplitude, SignalFrequency," +
-                                 $" Type, IsGrounded) " +
+                                 $" DesiredContent, Type, IsGrounded) " +
                                  $"VALUES ('{record.Name}','{record.ImageLocation}','{record.Description}','{record.SignalAmplitude}','{record.SignalFrequency}'," +
-                                 $"'{record.Type}','{record.IsGrounded}');";
+                                 $"'{record.DesiredContent}','{record.Type}','{record.IsGrounded}');";
             return commandText;
         }
         #endregion
