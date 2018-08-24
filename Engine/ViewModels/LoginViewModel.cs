@@ -12,14 +12,11 @@ namespace Engine.ViewModels
     {
 
         public LoginModel Model { get; set; }
-        private ButtonCommand Command;
 
         #region Constructor
         public LoginViewModel()
         {
             Model = new LoginModel();
-            // Removed Command function to accommodate PasswordBox and the SecureString
-            //Command = new ButtonCommand(this.LoginToAccount, Model.LoginCompleted);
         }
 
         #endregion
@@ -30,28 +27,6 @@ namespace Engine.ViewModels
         {
             Model.Password = this.ConvertToUnsecureString(parameter as System.Security.SecureString);
             Model.ValidateAccountAndLogin();
-        }
-
-            /* Removed Command function to accommodate PasswordBox and the SecureString 
-        public ICommand loginClick
-        {
-            get
-            {
-                return Command;
-            }
-        }*/
-
-        public bool LoginValidated
-        {
-            get { return Model.LoginCompleted; }
-        }
-        public string Username
-        {
-            get { return Model.Username; }
-        }
-        public string Password
-        {
-            get { return Model.Password; }
         }
         #endregion
 

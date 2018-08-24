@@ -29,18 +29,7 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
-        private void CreateButton_Click(object sender, RoutedEventArgs e)
-        {
-            //this implementation would be required for a passwordbox
-            //viewModel.CreateAccount(userPassword.SecurePassword);
-        }
-
-        private void ValidateButton_Click(object sender, RoutedEventArgs e)
-        {
-            //this implementation would be required for a passwordbox
-            //viewModel.ValidateAccount(userPassword.SecurePassword);
-        }
-
+ 
         private void Username_GotFocus(object sender, EventArgs e)
         {
             TextBox tb = (TextBox)sender;
@@ -77,17 +66,5 @@ namespace MainWindow.Views
                 tb.Foreground = Brushes.LightGray;
             }
         }
-        /*
-* Replaced with bindings
-private void OnClick_ValidateAccount(object sender, RoutedEventArgs e)
-{
-viewModel.ValidateAccount();
-}
-
-private void OnClick_CreateAccount(object sender, RoutedEventArgs e)
-{
-
-}
-*/
     }
 }
