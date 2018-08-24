@@ -26,19 +26,16 @@ namespace Engine.Models
         {
             CardDetails = new Card();
         }
-<<<<<<< HEAD
 
         public CardBaseModel(string Module)
         {
-            ImageSourceLookup(Module);
+            CardDetails = new Card();
+            GenerateCard(Module); 
         }
-        public string ModuleNumber
-=======
         #endregion
 
         #region Public Properties
         public string CardName
->>>>>>> 1fa1670c1eb780686a6986332b634f29b0a46e65
         {
             get { return cardName; }
             set
@@ -121,20 +118,6 @@ namespace Engine.Models
         }
         #endregion
 
-<<<<<<< HEAD
-        }
 
-        public CardBaseModel[] GetModules()
-        {
-            return new CardBaseModel[]
-            {
-                new CardBaseModel("NI 9215"),
-                new CardBaseModel("NI 9237"),
-                new CardBaseModel("NI 9237"),
-                new CardBaseModel("NI 9237")
-            };
-        }
-=======
->>>>>>> 1fa1670c1eb780686a6986332b634f29b0a46e65
     }
 }

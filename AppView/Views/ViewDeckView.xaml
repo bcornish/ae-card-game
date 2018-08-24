@@ -31,10 +31,15 @@
     </ContentControl.Resources>
 
     <UserControl.DataContext>
-        <ObjectDataProvider 
-      ObjectType="{x:Type model:CardBaseModel}" 
-      MethodName="GetModules" 
-      />
+        <!--<ObjectDataProvider x:Name="Provider"
+      ObjectType="{x:Type viewModels:ViewDeckViewModel}" 
+      MethodName="GetModules" >
+            <ObjectDataProvider.MethodParameters>
+                "NI 9221"
+            </ObjectDataProvider.MethodParameters>
+        </ObjectDataProvider>-->
+        <viewModels:ViewDeckViewModel/>
+
     </UserControl.DataContext>
 
     <Grid>
@@ -60,9 +65,19 @@
         <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding}" Margin="35,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding}" Margin="35,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="3" Content="{Binding}" Margin="35,35,0,0" />-->
+        <StackPanel Orientation="Horizontal">
+            <views:CardControl x:Name="Link1SignalStrengthControl" DataContext="{Binding Items[0], Mode=OneWay}"/>
+            <views:CardControl x:Name="Link2SignalStrengthControl" DataContext="{Binding Items[1], Mode=OneWay}"/>
+            <views:CardControl x:Name="Link3SignalStrengthControl" DataContext="{Binding Items[2], Mode=OneWay}"/>
+            <views:CardControl x:Name="Link4SignalStrengthControl" DataContext="{Binding Items[3], Mode=OneWay}"/>
+            <views:CardControl x:Name="Link5SignalStrengthControl" DataContext="{Binding Items[4], Mode=OneWay}"/>
+            <views:CardControl x:Name="Link6SignalStrengthControl" DataContext="{Binding Items[5], Mode=OneWay}"/>
 
-        <ItemsControl 
-      ItemsSource="{Binding}">
+        </StackPanel>
+        
+
+        <!--<ItemsControl 
+      ItemsSource="{Binding Items, Mode=OneWay}" >
             <ItemsControl.ItemTemplate>
                 <DataTemplate>
                     <StackPanel Orientation="Horizontal">
@@ -75,7 +90,8 @@
                     <StackPanel Orientation="Horizontal"/>
                 </ItemsPanelTemplate>
             </ItemsControl.ItemsPanel>
-        </ItemsControl>
+        </ItemsControl>-->
+
     </Grid>
 
 </UserControl>

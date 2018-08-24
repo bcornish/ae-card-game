@@ -21,7 +21,7 @@ namespace MainWindow.Views
     /// </summary>
     public partial class SystemControl : UserControl
     {
-        private readonly SystemBaseViewModel viewModel = new SystemBaseViewModel();
+        private readonly SystemBaseViewModel viewModel = new SystemBaseViewModel("Position");
         public SystemControl()
         {
             InitializeComponent();

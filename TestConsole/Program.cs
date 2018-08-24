@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using System.Data.SqlClient;
 using GatewayLibrary.Records;
 using GatewayLibrary.Databases;
+using GameMechanicsLibrary;
 
 namespace TestConsole
 {
@@ -73,31 +74,22 @@ namespace TestConsole
                     Console.WriteLine(name);
                 }
                 Console.WriteLine("Test 1 Complete.");
+                CardDealer dealer = new CardDealer();
+                List<Card> cards1 = dealer.ListAllCards();
                 // Test Pull All Card Records
-                List<CardRecord> records = new List<CardRecord>();
-                records = database.RequestAllCards();
-                foreach (CardRecord record in records) {
-                    Console.WriteLine(record.Name);
-                }
-                Console.WriteLine("Test 2 Complete.");
-                List<CardRecord> records2 = new List<CardRecord>();
-                records2 = database.RequestAllCards();
-                Shuffle(records2);
-                foreach (CardRecord record in records2)
-                {
-                    Console.WriteLine(record.Name);
-                }
-                Console.WriteLine("Test 2 Complete.");
-                List<CardRecord> records3 = new List<CardRecord>();
-                records3 = database.RequestAllCards();
-                Shuffle(records3);
-                Shuffle(records3);
-                foreach (CardRecord record in records3)
-                {
-                    Console.WriteLine(record.Name);
+                List<Card> moreCards = new List<Card>();
+                foreach (Card card2 in cards1) {
+                    Console.WriteLine(card2.Name);
                 }
                 Console.WriteLine("Test 2 Complete.");
                 // Test Pull a Specific Card Record
+                SystemCard sensor = dealer.ChooseRandomSensor();
+                List<Card> cards6 = dealer.DealCardsForSensor(sensor);
+                foreach (Card carde in cards6)
+                {
+                    Console.WriteLine(carde.Name);
+                }
+                Console.WriteLine(sensor.Name);
                 Console.WriteLine("Please Provide the name of one of the cards above (type exactly):");
                 CardRecord card = database.RequestCardByName(Console.ReadLine());
                 Console.WriteLine($"{card.Name},{card.ADCType},{card.IsMultiplexed},{card.SignalConditioning}");

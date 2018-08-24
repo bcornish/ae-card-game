@@ -5,7 +5,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModels="clr-namespace:Engine.ViewModels.TabControlVM;assembly=ClassLibrary1"
              xmlns:views="clr-namespace:MainWindow.Views"
-             d:DataContext="{d:DesignInstance viewModels:TabControlViewModel}"
+             d:DataContext="{d:DesignInstance viewModels:PlayViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
     <UserControl.Resources>
@@ -30,23 +30,29 @@
 
     <Grid VerticalAlignment="Center">
         <Grid.RowDefinitions>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
-            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="400"/>
+            <RowDefinition Height="25"/>
 
         </Grid.RowDefinitions>
 
         <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
-            <ColumnDefinition Width="Auto"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
+            <ColumnDefinition Width="300"/>
         </Grid.ColumnDefinitions>
-
-
-        <ContentControl Grid.Row="0" Grid.Column="0" ContentTemplate="{StaticResource System}" Content="{Binding}" Grid.ColumnSpan="3"/>
+        
+        <views:SystemControl x:Name="Link1SignalStrengthControl" Grid.Row="0" Grid.Column="1" DataContext="{Binding OtherItems[0], Mode=OneWay}" Margin="10"/>
+        <views:CardControl x:Name="Link2SignalStrengthControl" Grid.Row="1" Grid.Column="0" DataContext="{Binding Items[0], Mode=OneWay}" Margin="10"/>
+        <views:CardControl x:Name="Link3SignalStrengthControl" Grid.Row="1" Grid.Column="1" DataContext="{Binding Items[1], Mode=OneWay}" Margin="10"/>
+            <views:CardControl x:Name="Link4SignalStrengthControl" Grid.Row="1" Grid.Column="2" DataContext="{Binding Items[2], Mode=OneWay}" Margin="10"/>
+        <Button Content="Pick Me" Grid.Row="3" Grid.Column="0" HorizontalAlignment="Center" Command="{Binding selectLeftCard}"/>
+        <Button Content="Pick Me" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Center" Command="{Binding selectMiddleCard}"/>
+        <Button Content="Pick Me" Grid.Row="3" Grid.Column="2" HorizontalAlignment="Center" Command="{Binding selectRightCard}"/>
+        <Image Source="{Binding Model.PassFailImage, TargetNullValue=''}" Grid.Row="0" Grid.Column="0"/>
+        <!--<ContentControl Grid.Row="0" Grid.Column="0" ContentTemplate="{StaticResource System}" Content="{Binding}" Grid.ColumnSpan="3"/>
         <ContentControl Grid.Row="1" Grid.Column="0" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="0,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="1" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="35,35,0,0" />
-        <ContentControl Grid.Row="1" Grid.Column="2" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="35,35,0,0" />
+        <ContentControl Grid.Row="1" Grid.Column="2" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="35,35,0,0" />-->
     </Grid>
 </UserControl>

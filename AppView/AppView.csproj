@@ -184,6 +184,10 @@
       <Project>{c795b59b-9e80-409f-a278-f6622e1c6ac4}</Project>
       <Name>Engine</Name>
     </ProjectReference>
+    <ProjectReference Include="..\GameMechanicsLibrary\GameMechanicsLibrary.csproj">
+      <Project>{c3897b9e-b62b-49d4-9546-2e0d73930f58}</Project>
+      <Name>GameMechanicsLibrary</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Blank Fake Card.bmp" />
@@ -204,6 +208,10 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Images\Blank.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Images\Checkmark.png" />
+    <Resource Include="Images\Red X.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

@@ -16,7 +16,7 @@ namespace Engine.ViewModels
         #region Constructor
         public CardBaseViewModel(string Module)
         {
-            Model = new CardBaseModel();
+            Model = new CardBaseModel(Module);
 
             Model.GenerateCard(Module); // this should be removed, it's just for my testing
         }
@@ -45,11 +45,12 @@ namespace Engine.ViewModels
 
     }
 
-    public class ViewModel: BaseViewModel
+    public class ViewModel
     {
         public ViewModel()
         {
             Items.Add(new CardBaseViewModel("NI 9237"));
+            Items.Add(new CardBaseViewModel("NI 9215"));
             Items.Add(new CardBaseViewModel("NI 9215"));
             Items.Add(new CardBaseViewModel("NI 9215"));
         }

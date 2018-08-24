@@ -50,6 +50,10 @@
     <None Include="App.config" />
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\GameMechanicsLibrary\GameMechanicsLibrary.csproj">
+      <Project>{c3897b9e-b62b-49d4-9546-2e0d73930f58}</Project>
+      <Name>GameMechanicsLibrary</Name>
+    </ProjectReference>
     <ProjectReference Include="..\GatewayLibrary\GatewayLibrary.csproj">
       <Project>{2a40a8f0-48ff-4b90-b1a1-9cbf711382d6}</Project>
       <Name>GatewayLibrary</Name>

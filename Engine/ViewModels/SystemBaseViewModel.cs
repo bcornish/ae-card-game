@@ -7,15 +7,15 @@ using Engine.Models;
 
 namespace Engine.ViewModels
 {
-    public class SystemBaseViewModel: BaseViewModel
+    public class SystemBaseViewModel
     {
         public SystemBaseModel Model { get; set; }
 
         #region Constructor
-        public SystemBaseViewModel()
+        public SystemBaseViewModel(string sensorName)
         {
             Model = new SystemBaseModel();
-            Model.GenerateSystem("Heartbeat"); // this should be removed, it's just for my testing
+            Model.GenerateSystem(sensorName); // this should be removed, it's just for my testing
         }
 
         #endregion

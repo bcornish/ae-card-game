@@ -24,5 +24,10 @@ namespace MainWindow.Views
         {
             InitializeComponent();
         }
+
+        private void Link1SignalStrengthControl_MouseDoubleClick(object sender, MouseButtonEventArgs e)
+        {
+            
+        }
     }
 }

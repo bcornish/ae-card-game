@@ -8,40 +8,46 @@ namespace GameMechanicsLibrary
 {
     public class CardDealer
     {
-        // Given a sensor, give 1 right card and 2 random cards
-        public List<Card> DealCardsForSensor(SystemCard system)
+        public List<Card> ListAllCards()
         {
             // get all records and convert them to models
             CardDatabase database = new CardDatabase();
             database.OpenConnection();
             List<CardRecord> records = database.RequestAllCards();
             List<Card> cards = new List<Card>();
-            Card holderCard = new Card();
             foreach (CardRecord cardRecord in records)
             {
+                Card holderCard = new Card();
                 holderCard.PopulateCardFromRecord(cardRecord);
                 cards.Add(holderCard);
             }
             // randomize them
             ShuffleCards(cards);
+            database.CloseConnection();
+            return cards;
+        }
+        // Given a sensor, give 1 right card and 2 random cards
+        public List<Card> DealCardsForSensor(SystemCard system)
+        {
+            List<Card> cards = ListAllCards();
             // run them through matcher in random order until a match is found
             CardMatcher matcher = new CardMatcher();
             int necessaryCards = 3;
+            List<Card> dealtCards = new List<Card>();
             foreach (Card card in cards)
             {
                 if (matcher.CheckForMatch(card, system))
                 {
+                    dealtCards.Add(card);
                     necessaryCards++;
                 }
                 else if (necessaryCards < 3)
-                { 
-                    necessaryCards++;
-                } else
                 {
-                    cards.Remove(card);
+                    dealtCards.Add(card);
+                    necessaryCards++;
                 }
             }
-            return cards;
+                return cards;
         }
 
         // Give a random sensor
@@ -59,9 +65,9 @@ namespace GameMechanicsLibrary
             database.OpenConnection();
             List<SensorRecord> records = database.RequestAllSensors();
             List<SystemCard> cards = new List<SystemCard>();
-            SystemCard holderCard = new SystemCard();
             foreach (SensorRecord record in records)
             {
+                SystemCard holderCard = new SystemCard();
                 holderCard.PopulateSystemFromRecord(record);
                 cards.Add(holderCard);
             }

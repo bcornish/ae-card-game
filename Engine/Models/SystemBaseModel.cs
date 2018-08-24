@@ -25,6 +25,12 @@ namespace Engine.Models
         }
         #endregion
 
+        public SystemBaseModel(string System)
+        {
+            SystemCardDetails = new SystemCard();
+            GenerateSystem(System);
+        }
+
         #region Public Properties
         public string SystemPayout
         {

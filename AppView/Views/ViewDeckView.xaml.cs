@@ -27,5 +27,10 @@ namespace MainWindow.Views
             InitializeComponent();
             //DataContext = viewModel;
         }
+
+        private void ItemsControl_TouchDown(object sender, TouchEventArgs e)
+        {
+
+        }
     }
 }

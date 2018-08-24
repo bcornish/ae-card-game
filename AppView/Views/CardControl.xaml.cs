@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Engine.ViewModels;
+using GameMechanicsLibrary;
 
 namespace MainWindow.Views
 {
@@ -22,17 +23,12 @@ namespace MainWindow.Views
     public partial class CardControl : UserControl
     {
         private readonly CardBaseViewModel viewModel;
+        private string module;
 
         public CardControl()
         {
-            string input = "NI 9215";
-            Random rand = new Random();
-            int test = rand.Next(1,4);
-            if (test == 1)
-            {
-                input = "NI 9221";
-            }
-            viewModel = new CardBaseViewModel(input);
+            module = "NI 9215";
+            viewModel = new CardBaseViewModel(module);
             InitializeComponent();
 
             DataContext = viewModel;
