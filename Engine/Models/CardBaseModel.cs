@@ -128,7 +128,7 @@ namespace Engine.Models
             // Map CardRecord to CardBaseModel
             Name = card.Name;
             ImageLocation = $"pack://application:,,,/Window;component/Images/{card.Name}.bmp";
-            Description = card.Description;
+            Description = $"\"{card.Description}\"";
             Cost = Convert.ToInt32(card.Cost);
             ADCType = card.ADCType;
             SignalConditioning = card.SignalConditioning;
@@ -146,12 +146,12 @@ namespace Engine.Models
             {
                 samplingType = "Multiplexed";
             }
-            text = $"ADC Type: {ADCType}\n" +
+            text = $"ADC Type:            {ADCType}\n" +
                    $"Signal Conditioning: {SignalConditioning}\n" +
-                   $"TerminalConfig: {TerminalConfig}\n" +
-                   $"Measurement Range: ±{MeasurementRange} V\n" +
-                   $"Sample Rate: {SampleRate} Hz\n" +
-                   $"Sampling Architecture: {samplingType}\n";
+                   $"Terminal Config.:    {TerminalConfig}\n" +
+                   $"Measurement Range:   ±{MeasurementRange} V\n" +
+                   $"Sample Rate:         {SampleRate} Hz\n" +
+                   $"Sampling Mode:       {samplingType}\n";
             return text;
 
         }
