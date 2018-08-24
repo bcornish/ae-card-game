@@ -13,6 +13,14 @@ namespace Engine.Models
     
     public class CardBaseModel : BaseModel
     {
+        #region Private Properties
+        private string cardName;
+        private string cardSpecs;
+        private string price;
+        private string imageLocation;
+        private Card cardDetails;
+        #endregion
+
         #region Constructor
         public CardBaseModel()
         {
@@ -21,11 +29,56 @@ namespace Engine.Models
         #endregion
 
         #region Public Properties
-        public string CardName { get; private set; }
-        public string CardSpecs { get; private set; }
-        public string Price { get; private set; }
-        public string ImageLocation { get; private set; }
-        public Card CardDetails { get; private set; }
+        public string CardName
+        {
+            get { return cardName; }
+            set
+            {
+                cardName = value;
+
+                OnPropertyChanged(nameof(CardName));
+            }
+        }
+        public string CardSpecs
+        {
+            get { return cardSpecs; }
+            set
+            {
+                cardSpecs = value;
+
+                OnPropertyChanged(nameof(CardSpecs));
+            }
+        }
+        public string Price
+        {
+            get { return price; }
+            set
+            {
+                price = value;
+
+                OnPropertyChanged(nameof(Price));
+            }
+        }
+        public string ImageLocation
+        {
+            get { return imageLocation; }
+            set
+            {
+                imageLocation = value;
+
+                OnPropertyChanged(nameof(ImageLocation));
+            }
+        }
+        public Card CardDetails
+        {
+            get { return cardDetails; }
+            set
+            {
+                cardDetails = value;
+
+                OnPropertyChanged(nameof(CardDetails));
+            }
+        }
         #endregion
 
         #region Public Methods

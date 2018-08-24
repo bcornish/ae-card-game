@@ -12,7 +12,12 @@ namespace Engine.Models
 
     public class SystemBaseModel: BaseModel
     {
-
+        #region Private Properties
+        private string systemPayout;
+        private string systemRequirements;
+        private SystemCard systemCardDetails;
+        private string imageLocation;
+        #endregion
         #region Constructor
         public SystemBaseModel()
         {
@@ -21,10 +26,46 @@ namespace Engine.Models
         #endregion
 
         #region Public Properties
-        public string SystemPayout { get; private set; }
-        public string SystemRequirements { get; private set; }
-        public SystemCard SystemCardDetails { get; private set; }
-        public string ImageLocation { get; private set; }
+        public string SystemPayout
+        {
+            get { return systemPayout; }
+            set
+            {
+                systemPayout = value;
+
+                OnPropertyChanged(nameof(SystemPayout));
+            }
+        }
+        public string SystemRequirements
+        {
+            get { return systemRequirements; }
+            set
+            {
+                systemRequirements = value;
+
+                OnPropertyChanged(nameof(SystemRequirements));
+            }
+        }
+        public SystemCard SystemCardDetails
+        {
+            get { return systemCardDetails; }
+            set
+            {
+                systemCardDetails = value;
+
+                OnPropertyChanged(nameof(SystemCardDetails));
+            }
+        }
+        public string ImageLocation
+        {
+            get { return imageLocation; }
+            set
+            {
+                imageLocation = value;
+
+                OnPropertyChanged(nameof(ImageLocation));
+            }
+        }
         #endregion
 
         #region Public Methods
