@@ -8,8 +8,8 @@
              d:DataContext="{d:DesignInstance viewModels:TabControlViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <ContentControl.Resources>
-        <DataTemplate DataType="{x:Type viewModels:PlayViewModel}">
+    <UserControl.Resources>
+        <DataTemplate x:Key="System" DataType="{x:Type viewModels:PlayViewModel}">
             <Grid>
                 <ContentControl>
                     <views:SystemControl />
@@ -17,7 +17,7 @@
 
             </Grid>
         </DataTemplate>
-        <DataTemplate DataType="{x:Type viewModels:ViewDeckViewModel}">
+        <DataTemplate x:Key="Card" DataType="{x:Type viewModels:ViewDeckViewModel}">
             <Grid>
                 <ContentControl>
                     <views:CardControl />
@@ -25,7 +25,7 @@
 
             </Grid>
         </DataTemplate>
-    </ContentControl.Resources>
+    </UserControl.Resources>
 
 
     <Grid VerticalAlignment="Center">
@@ -44,9 +44,9 @@
         </Grid.ColumnDefinitions>
 
 
-        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}" Grid.ColumnSpan="3"/>
-        <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding}" Margin="0,35,0,0" />
-        <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding}" Margin="35,35,0,0" />
-        <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding}" Margin="35,35,0,0" />
+        <ContentControl Grid.Row="0" Grid.Column="0" ContentTemplate="{StaticResource System}" Content="{Binding}" Grid.ColumnSpan="3"/>
+        <ContentControl Grid.Row="1" Grid.Column="0" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="0,35,0,0" />
+        <ContentControl Grid.Row="1" Grid.Column="1" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="35,35,0,0" />
+        <ContentControl Grid.Row="1" Grid.Column="2" ContentTemplate="{StaticResource Card}" Content="{Binding}" Margin="35,35,0,0" />
     </Grid>
 </UserControl>

@@ -21,10 +21,18 @@ namespace MainWindow.Views
     /// </summary>
     public partial class CardControl : UserControl
     {
-        private readonly CardBaseViewModel viewModel = new CardBaseViewModel();
+        private readonly CardBaseViewModel viewModel;
 
         public CardControl()
         {
+            string input = "NI 9215";
+            Random rand = new Random();
+            int test = rand.Next(1,4);
+            if (test == 1)
+            {
+                input = "NI 9221";
+            }
+            viewModel = new CardBaseViewModel(input);
             InitializeComponent();
 
             DataContext = viewModel;
@@ -32,7 +40,12 @@ namespace MainWindow.Views
 
         private void ImageSourceQuery(object sender, RoutedEventArgs e)
         {
-            viewModel.ImageSource();
+           // viewModel.ImageSource();
         }
+
+        //private void UserControl_Loaded(object sender, RoutedEventArgs e)
+        //{
+        //    viewModel.UpdateCard("NI 9215");
+        //}
     }
 }

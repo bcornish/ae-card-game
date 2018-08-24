@@ -6,6 +6,7 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:viewModels="clr-namespace:Engine.ViewModels.TabControlVM;assembly=ClassLibrary1"
              xmlns:views="clr-namespace:MainWindow.Views"
+             xmlns:model="clr-namespace:Engine.Models;assembly=ClassLibrary1"
              d:DataContext="{d:DesignInstance viewModels:TabControlViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="700" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
@@ -28,7 +29,14 @@
             </Grid>
         </DataTemplate>
     </ContentControl.Resources>
-    
+
+    <UserControl.DataContext>
+        <ObjectDataProvider 
+      ObjectType="{x:Type model:CardBaseModel}" 
+      MethodName="GetModules" 
+      />
+    </UserControl.DataContext>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
@@ -44,14 +52,30 @@
         </Grid.ColumnDefinitions>
         
         <!--<TextBlock Text="{Binding Content}" />-->
-        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}"/>
+        <!--<ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}"/>
         <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding}" Margin="35,0,0,0" />
         <ContentControl Grid.Row="0" Grid.Column="2" Content="{Binding}" Margin="35,0,0,0" />
         <ContentControl Grid.Row="0" Grid.Column="3" Content="{Binding}" Margin="35,0,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding}" Margin="0,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding}" Margin="35,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding}" Margin="35,35,0,0" />
-        <ContentControl Grid.Row="1" Grid.Column="3" Content="{Binding}" Margin="35,35,0,0" />
+        <ContentControl Grid.Row="1" Grid.Column="3" Content="{Binding}" Margin="35,35,0,0" />-->
+
+        <ItemsControl 
+      ItemsSource="{Binding}">
+            <ItemsControl.ItemTemplate>
+                <DataTemplate>
+                    <StackPanel Orientation="Horizontal">
+                        <views:CardControl/>
+                    </StackPanel>
+                </DataTemplate>
+            </ItemsControl.ItemTemplate>
+            <ItemsControl.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <StackPanel Orientation="Horizontal"/>
+                </ItemsPanelTemplate>
+            </ItemsControl.ItemsPanel>
+        </ItemsControl>
     </Grid>
 
 </UserControl>

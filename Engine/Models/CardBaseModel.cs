@@ -29,6 +29,11 @@ namespace Engine.Models
             height = 200;
             width = 100;
         }
+
+        public CardBaseModel(string Module)
+        {
+            ImageSourceLookup(Module);
+        }
         public string ModuleNumber
         {
             get { return modelNumber; }
@@ -161,6 +166,17 @@ namespace Engine.Models
             ModulePrice = $"${Cost}";
             ModuleSpecs = GenerateModuleSpecsText();
 
+        }
+
+        public CardBaseModel[] GetModules()
+        {
+            return new CardBaseModel[]
+            {
+                new CardBaseModel("NI 9215"),
+                new CardBaseModel("NI 9237"),
+                new CardBaseModel("NI 9237"),
+                new CardBaseModel("NI 9237")
+            };
         }
     }
 }
