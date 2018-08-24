@@ -8,17 +8,29 @@
              d:DataContext="{d:DesignInstance viewModels:TabControlViewModel}"
              mc:Ignorable="d" 
              d:DesignHeight="300" d:DesignWidth="300">
-    <UserControl.Resources>
-        <DataTemplate DataType="{x:Type viewModels:TabControlViewModel}">
+    <ContentControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:PlayViewModel}">
             <Grid>
-                <views:CardControl />
+                <ContentControl>
+                    <views:SystemControl />
+                </ContentControl>
+
             </Grid>
         </DataTemplate>
-    </UserControl.Resources>
+        <DataTemplate DataType="{x:Type viewModels:ViewDeckViewModel}">
+            <Grid>
+                <ContentControl>
+                    <views:CardControl />
+                </ContentControl>
+
+            </Grid>
+        </DataTemplate>
+    </ContentControl.Resources>
 
 
-    <Grid>
+    <Grid VerticalAlignment="Center">
         <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
             <RowDefinition Height="Auto"/>
 
@@ -31,14 +43,10 @@
             <ColumnDefinition Width="Auto"/>
         </Grid.ColumnDefinitions>
 
-        <TextBlock Text="{Binding Content}" />
-        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}"/>
-        <ContentControl Grid.Row="0" Grid.Column="1" Content="{Binding}" Margin="35,0,0,0" />
-        <ContentControl Grid.Row="0" Grid.Column="2" Content="{Binding}" Margin="35,0,0,0" />
-        <ContentControl Grid.Row="0" Grid.Column="3" Content="{Binding}" Margin="35,0,0,0" />
+
+        <ContentControl Grid.Row="0" Grid.Column="0" Content="{Binding}" Grid.ColumnSpan="3"/>
         <ContentControl Grid.Row="1" Grid.Column="0" Content="{Binding}" Margin="0,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="1" Content="{Binding}" Margin="35,35,0,0" />
         <ContentControl Grid.Row="1" Grid.Column="2" Content="{Binding}" Margin="35,35,0,0" />
-        <ContentControl Grid.Row="1" Grid.Column="3" Content="{Binding}" Margin="35,35,0,0" />
     </Grid>
 </UserControl>
