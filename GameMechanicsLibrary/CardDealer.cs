@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Text;
 using GatewayLibrary.Databases;
 using GatewayLibrary.Records;
+using System.Security.Cryptography;
 
 namespace GameMechanicsLibrary
 {
@@ -39,15 +40,15 @@ namespace GameMechanicsLibrary
                 if (matcher.CheckForMatch(card, system))
                 {
                     dealtCards.Add(card);
-                    necessaryCards++;
+                    
                 }
-                else if (necessaryCards < 3)
+                else if (necessaryCards > 1)
                 {
                     dealtCards.Add(card);
-                    necessaryCards++;
+                    necessaryCards--;
                 }
             }
-                return cards;
+                return dealtCards;
         }
 
         // Give a random sensor
@@ -77,12 +78,15 @@ namespace GameMechanicsLibrary
 
         private void ShuffleCards(List<Card> list)
         {
-            Random rng = new Random();
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
             int n = list.Count;
             while (n > 1)
             {
+                byte[] box = new byte[1];
+                do provider.GetBytes(box);
+                while (!(box[0] < n * (Byte.MaxValue / n)));
+                int k = (box[0] % n);
                 n--;
-                int k = rng.Next(n + 1);
                 Card value = list[k];
                 list[k] = list[n];
                 list[n] = value;
@@ -90,12 +94,15 @@ namespace GameMechanicsLibrary
         }
         private void ShuffleSystemCards(List<SystemCard> list)
         {
-            Random rng = new Random();
+            RNGCryptoServiceProvider provider = new RNGCryptoServiceProvider();
             int n = list.Count;
             while (n > 1)
             {
+                byte[] box = new byte[1];
+                do provider.GetBytes(box);
+                while (!(box[0] < n * (Byte.MaxValue / n)));
+                int k = (box[0] % n);
                 n--;
-                int k = rng.Next(n + 1);
                 SystemCard value = list[k];
                 list[k] = list[n];
                 list[n] = value;
