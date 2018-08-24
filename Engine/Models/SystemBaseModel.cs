@@ -90,7 +90,7 @@ namespace Engine.Models
             // Map CardRecord to CardBaseModel
             Name = record.Name;
             ImageLocation = $"pack://application:,,,/Window;component/Images/{record.Type}.bmp";
-            Description = record.Description;
+            Description = $"\"{record.Description}\"";
             DesiredContent = record.DesiredContent;
             SignalAmplitude = Convert.ToDecimal(record.SignalAmplitude);
             if (record.SignalFrequency != "DC")
@@ -116,13 +116,13 @@ namespace Engine.Models
             string freqText = "DC";
             if (SignalFrequency != 0)
             {
-                freqText = $"{SignalFrequency}";
+                freqText = $"{SignalFrequency} Hz";
             }
-            text = $"Desired Signal Content: {DesiredContent}\n" +
+            text = $"Type of Sensor:   {SensorType}\n" +
+                   $"Desired Content:  {DesiredContent}\n" +
                    $"Signal Amplitude: ±{SignalAmplitude} V\n" +
-                   $"Signal Frequency: {SignalFrequency} Hz\n" +
-                   $"Type of Sensor: {SensorType}\n" +
-                   $"Grounding: {grounding}\n";
+                   $"Signal Frequency: {freqText}\n" +
+                   $"Grounding:        {grounding}\n";
             return text;
 
         }

@@ -9,14 +9,14 @@
 
     <UserControl.LayoutTransform>
         <TransformGroup>
-            <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
+            <ScaleTransform ScaleY="0.55" ScaleX="0.55"/>
             <SkewTransform/>
             <RotateTransform/>
-            <TranslateTransform X="0.5" Y="0.5"/>
+            <TranslateTransform X="0.55" Y="0.55"/>
         </TransformGroup>
     </UserControl.LayoutTransform>
 
-    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+    <Border BorderBrush="LightGray" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
         <Grid>
             <Grid.RowDefinitions>
                 <RowDefinition Height="20"/>
@@ -54,15 +54,17 @@
             <TextBlock Grid.Row="3" Grid.Column="1" 
                            Text="{Binding Model.SystemRequirements, TargetNullValue='No Requirements available'}"  
                            TextAlignment="Left"
-                           FontSize="18" 
+                           FontFamily="Lucida Sans Typewriter"
+                           FontSize="16" 
                            Foreground="White"
+                           Grid.ColumnSpan="2"
                            />
             <TextBlock Grid.Row="4" Grid.Column="1"
                            Text="{Binding Model.Description}"
                            TextWrapping="Wrap"
                            VerticalAlignment="Top" TextAlignment="Center" 
                            FontStyle="Italic"
-                           FontSize="18"
+                           FontSize="16"
                            Foreground="White" 
                            />
 
