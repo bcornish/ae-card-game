@@ -12,17 +12,64 @@ namespace Engine.Models
 {
     public class LoginModel : BaseModel
     {
+        private string username;
+        private string password;
+        private string usernameValidationMessage;
+        private string passwordValidationMessage;
+        private string accountValidationMessage;
+        private bool loginSuccess;
+
         public LoginModel()
         {
-            AccountValidationMessage = "";
-            Password = "password";
-            Username = "username";
-            LoginCompleted = true;
+            username = "username";
+            password = "password";
+            accountValidationMessage = null;
+            loginSuccess = true;
         }
-        public string Username { get; set; }
-        public string Password { get; set; }
-        public string AccountValidationMessage { get; set; }
-        public bool LoginCompleted { get; set; }
+
+        public string Username
+        {
+            get { return username; }
+            set
+            {
+                username = value;
+
+                OnPropertyChanged(nameof(Username));
+            }
+        }
+
+        public string Password
+        {
+            get { return password; }
+            set
+            {
+                password = value;
+
+                OnPropertyChanged(nameof(Password));
+            }
+        }
+
+        public string AccountValidationMessage
+        {
+            get { return accountValidationMessage; }
+            set
+            {
+                accountValidationMessage = value;
+
+                OnPropertyChanged(nameof(AccountValidationMessage));
+            }
+        }
+
+        public bool LoginCompleted
+        {
+            get { return loginSuccess; }
+            set
+            {
+                loginSuccess = value;
+
+                OnPropertyChanged(nameof(LoginCompleted));
+            }
+        }
 
         public void ValidateAccountAndLogin()
         {
@@ -31,18 +78,16 @@ namespace Engine.Models
             database.OpenConnection();
             // Check whether the username/password combination is valid or not
             AccountRecord loginAccount = database.LookUpAccountRecord(Username, Password);
-            
             if (loginAccount.ErrorString == "valid record")
             {
-                AccountValidationMessage = "Successful login.  You may now begin playing.";
+                AccountValidationMessage = "Successful login";
                 LoginCompleted = true;
             }
             else
             {
                 AccountValidationMessage = "Failed login. Check username and password and try again.";
                 LoginCompleted = false;
-            }
-            database.CloseConnection();
+            }           
         }
     }
 }

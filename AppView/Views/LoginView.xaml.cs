@@ -52,5 +52,23 @@ namespace MainWindow.Views
                 tb.Foreground = Brushes.LightGray;
             }
         }
+        private void Password_GotFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "password")
+            {
+                tb.Text = "";
+                tb.Foreground = Brushes.Black;
+            }
+        }
+        private void Password_LostFocus(object sender, EventArgs e)
+        {
+            TextBox tb = (TextBox)sender;
+            if (tb.Text == "")
+            {
+                tb.Text = "password";
+                tb.Foreground = Brushes.LightGray;
+            }
+        }
     }
 }
