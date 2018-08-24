@@ -42,20 +42,20 @@
                        Grid.ColumnSpan="3" Grid.RowSpan="6"
                        />
                 <TextBlock Grid.Row="1" Grid.Column="1" 
-                           Text="{Binding Model.Name, TargetNullValue='No Module'}" 
+                           Text="{Binding Model.CardDetails.Name, TargetNullValue='No Module'}" 
                            TextAlignment="Left" 
                            FontSize="25" 
                            FontWeight="Bold"
                            Foreground="White"
                            />
                 <TextBlock Grid.Row="1" Grid.Column="1" 
-                           Text="{Binding Model.ModulePrice, TargetNullValue='$0'}"  
+                           Text="{Binding Model.Price, TargetNullValue='$0'}"  
                            TextAlignment="Right" 
                            FontSize="25" 
                            Foreground="White" 
                            />
                 <TextBlock Grid.Row="3" Grid.Column="1" 
-                           Text="{Binding Model.ModuleSpecs, TargetNullValue='No Specifications available'}"  
+                           Text="{Binding Model.CardSpecs, TargetNullValue='No Specifications available'}"  
                            TextAlignment="Left"
                            FontFamily="Lucida Sans Typewriter"
                            FontSize="16" 
@@ -63,7 +63,7 @@
                            Grid.ColumnSpan="2"
                            />
                 <TextBlock Grid.Row="4" Grid.Column="1"
-                           Text="{Binding Model.Description}"
+                           Text="{Binding Model.CardDetails.Description}"
                            TextWrapping="Wrap"
                            VerticalAlignment="Top" TextAlignment="Center" 
                            FontStyle="Italic"

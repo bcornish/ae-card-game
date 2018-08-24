@@ -6,166 +6,122 @@ using System.Text;
 using System.Threading.Tasks;
 using GatewayLibrary.Databases;
 using GatewayLibrary.Records;
+using GameMechanicsLibrary;
 
 namespace Engine.Models
 {
     
     public class CardBaseModel : BaseModel
     {
-        #region Original Properties
-        private string modelNumber;
-        private string specifications;
-        private string cardBaseImage;
+        #region Private Properties
+        private string cardName;
+        private string cardSpecs;
         private string price;
-        private int height;
-        private int width;
+        private string imageLocation;
+        private Card cardDetails;
+        #endregion
 
+        #region Constructor
         public CardBaseModel()
         {
-            modelNumber = null;
-            specifications = null;
-            cardBaseImage = null;
-            price = null;
-            height = 200;
-            width = 100;
+            CardDetails = new Card();
         }
+<<<<<<< HEAD
 
         public CardBaseModel(string Module)
         {
             ImageSourceLookup(Module);
         }
         public string ModuleNumber
+=======
+        #endregion
+
+        #region Public Properties
+        public string CardName
+>>>>>>> 1fa1670c1eb780686a6986332b634f29b0a46e65
         {
-            get { return modelNumber; }
+            get { return cardName; }
             set
             {
-                modelNumber = value;
+                cardName = value;
 
-                OnPropertyChanged(nameof(ModuleNumber));
+                OnPropertyChanged(nameof(CardName));
             }
         }
-        public string ModuleSpecs
+        public string CardSpecs
         {
-            get { return specifications; }
+            get { return cardSpecs; }
             set
             {
-                specifications = value;
+                cardSpecs = value;
 
-                OnPropertyChanged(nameof(ModuleSpecs));
+                OnPropertyChanged(nameof(CardSpecs));
             }
         }
-        public string ModulePrice
+        public string Price
         {
             get { return price; }
             set
             {
                 price = value;
 
-                OnPropertyChanged(nameof(ModulePrice));
+                OnPropertyChanged(nameof(Price));
             }
         }
-        public string CardBaseImage
+        public string ImageLocation
         {
-            get { return cardBaseImage; }
+            get { return imageLocation; }
             set
             {
-                cardBaseImage = value;
+                imageLocation = value;
 
-                OnPropertyChanged(nameof(CardBaseImage));
+                OnPropertyChanged(nameof(ImageLocation));
+            }
+        }
+        public Card CardDetails
+        {
+            get { return cardDetails; }
+            set
+            {
+                cardDetails = value;
+
+                OnPropertyChanged(nameof(CardDetails));
             }
         }
         #endregion
 
-
-
-        public int Width
+        #region Public Methods
+        public void GenerateCard(string cardName)
         {
-            get { return width; }
-            set
-            {
-                width = value;
+            CardDetails.GenerateCardByName(cardName);
+            ImageLocation = $"pack://application:,,,/Window;component/Images/{CardDetails.Name}.bmp";
+            Price = $"${CardDetails.Cost}";
+            CardSpecs = GenerateModuleSpecsText();
 
-                OnPropertyChanged(nameof(Width));
-            }
         }
+        #endregion
 
-        public int Height
-        {
-            get { return height; }
-            set
-            {
-                width = value;
-
-                OnPropertyChanged(nameof(Height));
-            }
-        }
-
-        public void ImageSourceLookup()
-        {
-            //TODO: implement logic to look up cards
-
-            CardBaseImage = "pack://application:,,,/Window;component/Blank Fake Card.bmp";
-            ModuleNumber = "NI 9215";
-            ModulePrice = "$900";
-            ModuleSpecs = "Testing";
-        }
-
-        public string Name { get; private set; }
-        public string ImageLocation { get; private set; }
-        public string Description { get; private set; }
-        public int Cost { get; private set; }
-        public string ADCType { get; private set; }
-        public string SignalConditioning { get; private set; }
-        public string TerminalConfig { get; private set; }
-        public decimal MeasurementRange { get; private set; }
-        public int SampleRate { get; private set; }
-        public bool IsMultiplexed { get; private set; }
-
-        public void MapCardRecordToModel(string name)
-        {
-            // Open Card Database
-            CardDatabase database = new CardDatabase();
-            database.OpenConnection();
-            // Request CardRecord from Database
-            CardRecord card = new CardRecord();
-            card = database.RequestCardByName(name);
-            database.CloseConnection();
-            // Map CardRecord to CardBaseModel
-            Name = card.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/{card.Name}.bmp";
-            Description = $"\"{card.Description}\"";
-            Cost = Convert.ToInt32(card.Cost);
-            ADCType = card.ADCType;
-            SignalConditioning = card.SignalConditioning;
-            TerminalConfig = card.TerminalConfig;
-            MeasurementRange = Convert.ToDecimal(card.MeasurementRange);
-            SampleRate = Convert.ToInt32(card.SampleRate);
-            IsMultiplexed = (card.IsMultiplexed == "Yes");
-        }
-
+        #region Private Methods
         private string GenerateModuleSpecsText()
         {
             string text = null;
             string samplingType = "Simultaneous";
-            if (IsMultiplexed)
+            if (CardDetails.IsMultiplexed)
             {
                 samplingType = "Multiplexed";
             }
-            text = $"ADC Type:            {ADCType}\n" +
-                   $"Signal Conditioning: {SignalConditioning}\n" +
-                   $"Terminal Config.:    {TerminalConfig}\n" +
-                   $"Measurement Range:   ±{MeasurementRange} V\n" +
-                   $"Sample Rate:         {SampleRate} Hz\n" +
+            text = $"ADC Type:            {CardDetails.ADCType}\n" +
+                   $"Signal Conditioning: {CardDetails.SignalConditioning}\n" +
+                   $"Terminal Config.:    {CardDetails.TerminalConfig}\n" +
+                   $"Measurement Range:   ±{CardDetails.MeasurementRange} V\n" +
+                   $"Sample Rate:         {CardDetails.SampleRate} Hz\n" +
                    $"Sampling Mode:       {samplingType}\n";
             return text;
 
         }
-        public void ImageSourceLookup(string cardName)
-        {
-            MapCardRecordToModel(cardName);
-            ModulePrice = $"${Cost}";
-            ModuleSpecs = GenerateModuleSpecsText();
+        #endregion
 
+<<<<<<< HEAD
         }
 
         public CardBaseModel[] GetModules()
@@ -178,5 +134,7 @@ namespace Engine.Models
                 new CardBaseModel("NI 9237")
             };
         }
+=======
+>>>>>>> 1fa1670c1eb780686a6986332b634f29b0a46e65
     }
 }

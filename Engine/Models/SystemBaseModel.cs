@@ -5,136 +5,100 @@ using System.Text;
 using System.Threading.Tasks;
 using GatewayLibrary.Databases;
 using GatewayLibrary.Records;
+using GameMechanicsLibrary;
 
 namespace Engine.Models
 {
 
     public class SystemBaseModel: BaseModel
     {
-        #region Original Properties
-        private string name;
-        private string payout;
-        private string systemBaseImage;
-        private string reqs;
-
+        #region Private Properties
+        private string systemPayout;
+        private string systemRequirements;
+        private SystemCard systemCardDetails;
+        private string imageLocation;
+        #endregion
+        #region Constructor
         public SystemBaseModel()
         {
-            name = null;
-            reqs = null;
-            systemBaseImage = null;
-            payout = null;
+            SystemCardDetails = new SystemCard();
         }
+        #endregion
 
-        public string SystemName
-        {
-            get { return name; }
-            set
-            {
-                name = value;
-
-                OnPropertyChanged(nameof(SystemName));
-            }
-        }
+        #region Public Properties
         public string SystemPayout
         {
-            get { return payout; }
+            get { return systemPayout; }
             set
             {
-                payout = value;
+                systemPayout = value;
 
                 OnPropertyChanged(nameof(SystemPayout));
             }
         }
-
-        public string SystemBaseImage
-        {
-            get { return systemBaseImage; }
-            set
-            {
-                systemBaseImage = value;
-
-                OnPropertyChanged(nameof(SystemBaseImage));
-            }
-        }
         public string SystemRequirements
         {
-            get { return reqs; }
+            get { return systemRequirements; }
             set
             {
-                reqs = value;
+                systemRequirements = value;
 
                 OnPropertyChanged(nameof(SystemRequirements));
             }
         }
+        public SystemCard SystemCardDetails
+        {
+            get { return systemCardDetails; }
+            set
+            {
+                systemCardDetails = value;
+
+                OnPropertyChanged(nameof(SystemCardDetails));
+            }
+        }
+        public string ImageLocation
+        {
+            get { return imageLocation; }
+            set
+            {
+                imageLocation = value;
+
+                OnPropertyChanged(nameof(ImageLocation));
+            }
+        }
         #endregion
 
-        public string Name { get; private set; }
-        public string ImageLocation { get; private set; }
-        public string Description { get; private set; }
-        public string DesiredContent { get; private set; }
-        public decimal SignalAmplitude { get; private set; }
-        public int SignalFrequency { get; private set; }
-        public string SensorType { get; private set; }
-        public bool IsGrounded { get; private set; }
-        // Sensor class got deleted at some point, and I didn't feel like re-adding them yet
-        // public List<SubSystems.Sensor> sensors { get; private set; } 
-
-        public void MapSignalRecordToModel(string name)
+        #region Public Methods
+        public void GenerateSystem(string systemName)
         {
-            // Open Card Database
-            SensorDatabase database = new SensorDatabase();
-            database.OpenConnection();
-            // Request CardRecord from Database
-            SensorRecord record = database.RequestSensorByName(name);
-            database.CloseConnection();
-            // Map CardRecord to CardBaseModel
-            Name = record.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/{record.Type}.bmp";
-            Description = $"\"{record.Description}\"";
-            DesiredContent = record.DesiredContent;
-            SignalAmplitude = Convert.ToDecimal(record.SignalAmplitude);
-            if (record.SignalFrequency != "DC")
-            {
-                SignalFrequency = Convert.ToInt32(record.SignalFrequency);
-            }
-            else
-            {
-                SignalFrequency = 0;
-            }
-            SensorType = record.Type;
-            IsGrounded = (record.IsGrounded == "Yes");
+            SystemCardDetails.GenerateSystemByName(systemName);
+            ImageLocation = $"pack://application:,,,/Window;component/Images/{SystemCardDetails.SensorType}.bmp";
+            SystemRequirements = GenerateSensorReqsText();
         }
+        #endregion
 
+        #region Private Methods
         private string GenerateSensorReqsText()
         {
             string text = null;
             string grounding = "Floating";
-            if (IsGrounded)
+            if (SystemCardDetails.IsGrounded)
             {
                 grounding = "Grounded";
             }
             string freqText = "DC";
-            if (SignalFrequency != 0)
+            if (SystemCardDetails.SignalFrequency != 0)
             {
-                freqText = $"{SignalFrequency} Hz";
+                freqText = $"{SystemCardDetails.SignalFrequency} Hz";
             }
-            text = $"Type of Sensor:   {SensorType}\n" +
-                   $"Desired Content:  {DesiredContent}\n" +
-                   $"Signal Amplitude: ±{SignalAmplitude} V\n" +
+            text = $"Type of Sensor:   {SystemCardDetails.SensorType}\n" +
+                   $"Desired Content:  {SystemCardDetails.DesiredContent}\n" +
+                   $"Signal Amplitude: ±{SystemCardDetails.SignalAmplitude} V\n" +
                    $"Signal Frequency: {freqText}\n" +
                    $"Grounding:        {grounding}\n";
             return text;
 
         }
-        public void ImageSourceLookup(string systemName)
-        {
-            //TODO: implement logic to look up cards
-            MapSignalRecordToModel(systemName);
-            SystemBaseImage = ImageLocation;
-            SystemName = Name;
-            SystemPayout = "Sensor";
-            SystemRequirements = GenerateSensorReqsText();
-        }
-            
-        }
+        #endregion
+    }
 }

@@ -17,7 +17,8 @@ namespace Engine.ViewModels
         public CardBaseViewModel(string Module)
         {
             Model = new CardBaseModel();
-            Model.ImageSourceLookup(Module); // this should be removed, it's just for my testing
+
+            Model.GenerateCard(Module); // this should be removed, it's just for my testing
         }
 
         //public CardBaseViewModel()
@@ -37,7 +38,7 @@ namespace Engine.ViewModels
 
         public void UpdateCard(string moduleName)
         {
-            Model.ImageSourceLookup(moduleName);
+            Model.GenerateCard(moduleName);
         }
         #endregion
 
