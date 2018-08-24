@@ -15,7 +15,7 @@ namespace Engine.ViewModels
         public SystemBaseViewModel()
         {
             Model = new SystemBaseModel();
-            Model.ImageSourceLookup("Heartbeat"); // this should be removed, it's just for my testing
+            Model.GenerateSystem("Heartbeat"); // this should be removed, it's just for my testing
         }
 
         #endregion

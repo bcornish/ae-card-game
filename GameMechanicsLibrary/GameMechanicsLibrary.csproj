@@ -1,16 +1,17 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
     <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
-    <ProjectGuid>{C795B59B-9E80-409F-A278-F6622E1C6AC4}</ProjectGuid>
+    <ProjectGuid>{C3897B9E-B62B-49D4-9546-2E0D73930F58}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Engine</RootNamespace>
-    <AssemblyName>ClassLibrary1</AssemblyName>
+    <RootNamespace>GameMechanicsLibrary</RootNamespace>
+    <AssemblyName>GameMechanicsLibrary</AssemblyName>
     <TargetFrameworkVersion>v4.5.2</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -30,7 +31,6 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="PresentationFramework" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,39 +41,17 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Models\AccountCreationModel.cs" />
-    <Compile Include="Models\BaseModel.cs" />
-    <Compile Include="Models\CardBaseModel.cs" />
-    <Compile Include="Models\LoginModel.cs" />
-    <Compile Include="Models\MainWindowModel.cs" />
-    <Compile Include="Models\SystemBaseModel.cs" />
+    <Compile Include="Card.cs" />
+    <Compile Include="CardDealer.cs" />
+    <Compile Include="CardMatcher.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="ViewModels\AccountCreationViewModel.cs" />
-    <Compile Include="ViewModels\BaseViewModel.cs" />
-    <Compile Include="ViewModels\CardBaseViewModel.cs" />
-    <Compile Include="ViewModels\LoginViewModel.cs" />
-    <Compile Include="ViewModels\MainWindowViewModel.cs" />
-    <Compile Include="ViewModels\NavigationViewModel.cs" />
-    <Compile Include="ViewModels\StartPlayViewModel.cs" />
-    <Compile Include="ViewModels\SystemBaseViewModel.cs" />
-    <Compile Include="ViewModels\TabControlViewModel.cs" />
+    <Compile Include="SystemCard.cs" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\GameMechanicsLibrary\GameMechanicsLibrary.csproj">
-      <Project>{c3897b9e-b62b-49d4-9546-2e0d73930f58}</Project>
-      <Name>GameMechanicsLibrary</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GatewayLibrary\GatewayLibrary.csproj">
       <Project>{2a40a8f0-48ff-4b90-b1a1-9cbf711382d6}</Project>
       <Name>GatewayLibrary</Name>
     </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
-  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
-       Other similar extension points exist, see Microsoft.Common.targets.
-  <Target Name="BeforeBuild">
-  </Target>
-  <Target Name="AfterBuild">
-  </Target>
-  -->
 </Project>

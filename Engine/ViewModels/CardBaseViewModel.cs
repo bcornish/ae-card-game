@@ -16,7 +16,7 @@ namespace Engine.ViewModels
         public CardBaseViewModel()
         {
             Model = new CardBaseModel();
-            Model.ImageSourceLookup("NI 9237"); // this should be removed, it's just for my testing
+            Model.GenerateCard("NI 9237"); // this should be removed, it's just for my testing
         }
 
         #endregion

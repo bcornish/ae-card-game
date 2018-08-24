@@ -80,6 +80,23 @@ namespace TestConsole
                     Console.WriteLine(record.Name);
                 }
                 Console.WriteLine("Test 2 Complete.");
+                List<CardRecord> records2 = new List<CardRecord>();
+                records2 = database.RequestAllCards();
+                Shuffle(records2);
+                foreach (CardRecord record in records2)
+                {
+                    Console.WriteLine(record.Name);
+                }
+                Console.WriteLine("Test 2 Complete.");
+                List<CardRecord> records3 = new List<CardRecord>();
+                records3 = database.RequestAllCards();
+                Shuffle(records3);
+                Shuffle(records3);
+                foreach (CardRecord record in records3)
+                {
+                    Console.WriteLine(record.Name);
+                }
+                Console.WriteLine("Test 2 Complete.");
                 // Test Pull a Specific Card Record
                 Console.WriteLine("Please Provide the name of one of the cards above (type exactly):");
                 CardRecord card = database.RequestCardByName(Console.ReadLine());
@@ -91,5 +108,19 @@ namespace TestConsole
             Console.WriteLine("Nothing went wrong in this tests");
             Console.ReadLine();
         }
+        private static void Shuffle(List<CardRecord> list)
+        {
+            Random rng = new Random();
+            int n = list.Count;
+            while (n > 1)
+            {
+                n--;
+                int k = rng.Next(n + 1);
+                CardRecord value = list[k];
+                list[k] = list[n];
+                list[n] = value;
+            }
+        }
     }
+
 }
