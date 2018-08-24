@@ -89,7 +89,7 @@ namespace Engine.Models
             database.CloseConnection();
             // Map CardRecord to CardBaseModel
             Name = record.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/Blank.bmp";
+            ImageLocation = $"pack://application:,,,/Window;component/Images/{record.Type}.bmp";
             Description = record.Description;
             DesiredContent = record.DesiredContent;
             SignalAmplitude = Convert.ToDecimal(record.SignalAmplitude);
@@ -122,8 +122,7 @@ namespace Engine.Models
                    $"Signal Amplitude: ±{SignalAmplitude} V\n" +
                    $"Signal Frequency: {SignalFrequency} Hz\n" +
                    $"Type of Sensor: {SensorType}\n" +
-                   $"Grounding: {grounding}\n\n" +
-                   $"\"{Description}\"\n";
+                   $"Grounding: {grounding}\n";
             return text;
 
         }

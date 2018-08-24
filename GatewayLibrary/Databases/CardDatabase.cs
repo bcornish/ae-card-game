@@ -65,7 +65,6 @@ namespace GatewayLibrary.Databases
         {
             CardRecord record = new CardRecord();
             record.Name = sqlReader["Name"].ToString();
-            record.ImageLocation = sqlReader["ImageLocation"].ToString();
             record.Description = sqlReader["Description"].ToString();
             record.Cost = sqlReader["Cost"].ToString();
             record.ADCType = sqlReader["ADCType"].ToString();
@@ -78,7 +77,7 @@ namespace GatewayLibrary.Databases
         }
         private string ConvertRecordToSQLCommand(CardRecord record)
         {
-            string commandText = $"INSERT INTO {databaseTableName} (Name, ImageLocation, Description, ADCType, SignalConditioning," +
+            string commandText = $"INSERT INTO {databaseTableName} (Name, Description, ADCType, SignalConditioning," +
                                  $" Cost, TerminalConfig, MeasurementRange, SampleRate, IsMultiplexed) " +
                                  $"VALUES ('{record.Name}','{record.ImageLocation}','{record.Description}','{record.ADCType}','{record.SignalConditioning}'," +
                                  $"'{record.Cost}','{record.TerminalConfig}','{record.MeasurementRange}','{record.SampleRate}','{record.IsMultiplexed}');";

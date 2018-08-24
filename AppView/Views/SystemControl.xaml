@@ -9,33 +9,63 @@
 
     <UserControl.LayoutTransform>
         <TransformGroup>
-            <ScaleTransform ScaleY="0.25" ScaleX="0.25"/>
+            <ScaleTransform ScaleY="0.5" ScaleX="0.5"/>
             <SkewTransform/>
             <RotateTransform/>
-            <TranslateTransform X="0.25" Y="0.25"/>
+            <TranslateTransform X="0.5" Y="0.5"/>
         </TransformGroup>
     </UserControl.LayoutTransform>
-    
-    <Grid>
-        <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
-            <Grid>
-                <Grid.RowDefinitions>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                    <RowDefinition Height="Auto"/>
-                </Grid.RowDefinitions>
 
-                <Grid.ColumnDefinitions>
-                    <ColumnDefinition Width="Auto"/>
-                    <ColumnDefinition Width="Auto"/>
-                </Grid.ColumnDefinitions>
+    <Border BorderBrush="Black" BorderThickness="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="20"/>
+                <RowDefinition Height="40"/>
+                <RowDefinition Height="260"/>
+                <RowDefinition Height="170"/>
+                <RowDefinition Height="80"/>
+                <RowDefinition Height="20"/>
+            </Grid.RowDefinitions>
 
-                <Image Source="{Binding Model.SystemBaseImage, TargetNullValue='pack://application:,,,/Window;component/Images/Blank.bmp'}" HorizontalAlignment="Left" VerticalAlignment="Top" Grid.ColumnSpan="2" Grid.RowSpan="4"/>
-                <TextBlock Grid.Row="0" Grid.Column="0" Text="{Binding Model.SystemName, TargetNullValue='No Device'}" FontSize="30" Foreground="White" FontWeight="Bold" Margin="67,33,-67,-33" />
-                <TextBlock Grid.Row="0" Grid.Column="1" Text="{Binding Model.SystemPayout, TargetNullValue='Sensor'}"  TextAlignment="Right" FontSize="30" Foreground="White" FontWeight="Bold" Margin="-80,33,80,-33" />
-                <TextBlock Grid.Row="2" Grid.Column="0" Text="{Binding Model.SystemRequirements, TargetNullValue='No requirements listed'}"  FontSize="30" Foreground="White" FontWeight="Bold" Grid.ColumnSpan="2" Grid.RowSpan="2" Margin="67,42,-67,-42"/>
-            </Grid>
-        </Border>
-    </Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="40"/>
+                <ColumnDefinition Width="360"/>
+                <ColumnDefinition Width="40"/>
+            </Grid.ColumnDefinitions>
+
+            <Image Source="{Binding Model.ImageLocation, TargetNullValue='pack://application:,,,/Window;component/Images/Blank.bmp'}" 
+                       HorizontalAlignment="Left" 
+                       VerticalAlignment="Top" 
+                       Grid.ColumnSpan="3" Grid.RowSpan="6"
+                       />
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                           Text="{Binding Model.Name, TargetNullValue='No'}" 
+                           TextAlignment="Left" 
+                           FontSize="25" 
+                           FontWeight="Bold"
+                           Foreground="White"
+                           />
+            <TextBlock Grid.Row="1" Grid.Column="1" 
+                           Text="Sensor"  
+                           TextAlignment="Right" 
+                           FontSize="25" 
+                           Foreground="White" 
+                           />
+            <TextBlock Grid.Row="3" Grid.Column="1" 
+                           Text="{Binding Model.SystemRequirements, TargetNullValue='No Requirements available'}"  
+                           TextAlignment="Left"
+                           FontSize="18" 
+                           Foreground="White"
+                           />
+            <TextBlock Grid.Row="4" Grid.Column="1"
+                           Text="{Binding Model.Description}"
+                           TextWrapping="Wrap"
+                           VerticalAlignment="Top" TextAlignment="Center" 
+                           FontStyle="Italic"
+                           FontSize="18"
+                           Foreground="White" 
+                           />
+
+        </Grid>
+    </Border>
 </UserControl>

@@ -122,11 +122,12 @@ namespace Engine.Models
             CardDatabase database = new CardDatabase();
             database.OpenConnection();
             // Request CardRecord from Database
-            CardRecord card = database.RequestCardByName(name);
+            CardRecord card = new CardRecord();
+            card = database.RequestCardByName(name);
             database.CloseConnection();
             // Map CardRecord to CardBaseModel
             Name = card.Name;
-            ImageLocation = $"pack://application:,,,/Window;component/Images/Blank.bmp";
+            ImageLocation = $"pack://application:,,,/Window;component/Images/{card.Name}.bmp";
             Description = card.Description;
             Cost = Convert.ToInt32(card.Cost);
             ADCType = card.ADCType;
@@ -150,8 +151,7 @@ namespace Engine.Models
                    $"TerminalConfig: {TerminalConfig}\n" +
                    $"Measurement Range: ±{MeasurementRange} V\n" +
                    $"Sample Rate: {SampleRate} Hz\n" +
-                   $"Sampling Architecture: {samplingType}\n\n" +
-                   $"\"{Description}\"\n";
+                   $"Sampling Architecture: {samplingType}\n";
             return text;
 
         }

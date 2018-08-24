@@ -65,7 +65,6 @@ namespace GatewayLibrary.Databases
         {
             SensorRecord record = new SensorRecord();
             record.Name = sqlReader["Name"].ToString();
-            record.ImageLocation = sqlReader["ImageLocation"].ToString();
             record.Description = sqlReader["Description"].ToString();
             record.DesiredContent = sqlReader["DesiredContent"].ToString();
             record.SignalAmplitude = sqlReader["SignalAmplitude"].ToString();
@@ -76,7 +75,7 @@ namespace GatewayLibrary.Databases
         }
         private string ConvertRecordToSQLCommand(SensorRecord record)
         {
-            string commandText = $"INSERT INTO {databaseTableName} (Name, ImageLocation, Description, SignalAmplitude, SignalFrequency," +
+            string commandText = $"INSERT INTO {databaseTableName} (Name, Description, SignalAmplitude, SignalFrequency," +
                                  $" DesiredContent, Type, IsGrounded) " +
                                  $"VALUES ('{record.Name}','{record.ImageLocation}','{record.Description}','{record.SignalAmplitude}','{record.SignalFrequency}'," +
                                  $"'{record.DesiredContent}','{record.Type}','{record.IsGrounded}');";
