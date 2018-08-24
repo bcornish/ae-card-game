@@ -17,26 +17,56 @@
 
     <Page.Resources>
 
-
+      
+        
+        
+        <tabControlViewModels:ViewTemplateSelector x:Key="Selector">
+            <tabControlViewModels:ViewTemplateSelector.ViewDeckTemplate>
+                <DataTemplate DataType="{x:Type tabControlViewModels:ViewDeckViewModel}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
+                        <Grid>
+                            <views:ViewDeckView />
+                        </Grid>
+                    </ScrollViewer>
+                </DataTemplate>
+            </tabControlViewModels:ViewTemplateSelector.ViewDeckTemplate>
+            <tabControlViewModels:ViewTemplateSelector.ViewPlayTemplate>
+                <DataTemplate DataType="{x:Type tabControlViewModels:PlayViewModel}">
+                    <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
+                        <Grid>
+                            <views:PlayGameView />
+                        </Grid>
+                    </ScrollViewer>
+                </DataTemplate>
+            </tabControlViewModels:ViewTemplateSelector.ViewPlayTemplate>
+        </tabControlViewModels:ViewTemplateSelector>
     </Page.Resources>
+    
+    
 
     <DockPanel>
         <!--<StackPanel Orientation="Vertical" Width="200" HorizontalAlignment="Center" VerticalAlignment="Center" >
             <Button Content="View Deck" MinWidth="100" Command="{Binding ViewDeckClick}"/>
             <Button Content="Play" MinWidth="100" Margin="0,20,0,0" Command="{Binding PlayClick}"/>
         </StackPanel>-->
-     
+        <!--ContentTemplateSelector="{DynamicResource Selector}"  SelectionChanged="TabControl_SelectionChanged"-->
 
-        <TabControl ItemsSource="{Binding Children}" SelectionChanged="TabControl_SelectionChanged">
-                <TabControl.ContentTemplate>
-                    <DataTemplate DataType="{x:Type tabControlViewModels:TabControlViewModel}">
+        <TabControl ItemsSource="{Binding Children}" ContentTemplateSelector="{StaticResource Selector}">
+            <TabControl.Resources>
+               
+
+            </TabControl.Resources>
+                <!--<TabControl.ContentTemplate>
+                    <DataTemplate DataType="{x:Type tabControlViewModels:ViewDeckViewModel}">
                         <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Auto" CanContentScroll="True" MaxHeight="{DynamicResource {x:Static SystemParameters.MaximumWindowTrackHeightKey}}" MaxWidth="{DynamicResource {x:Static SystemParameters.MaximizedPrimaryScreenWidthKey}}">
                             <Grid>
-                                <views:ViewDeckView />
-                            </Grid>
+                            <views:ViewDeckView />
+                        </Grid>
                         </ScrollViewer>
                     </DataTemplate>
-                </TabControl.ContentTemplate>
+                    
+                </TabControl.ContentTemplate>-->
+            
                 <TabControl.ItemContainerStyle>
                     <Style TargetType="{x:Type TabItem}">
                         <Setter Property="Header" Value="{Binding Name}" />

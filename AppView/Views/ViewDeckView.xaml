@@ -10,7 +10,7 @@
              mc:Ignorable="d" 
              d:DesignHeight="400" d:DesignWidth="700" ScrollViewer.HorizontalScrollBarVisibility="Visible" >
 
-    <UserControl.Resources>
+    <ContentControl.Resources>
         <DataTemplate DataType="{x:Type viewModels:PlayViewModel}">
             <Grid>
                 <ContentControl>
@@ -27,7 +27,7 @@
 
             </Grid>
         </DataTemplate>
-    </UserControl.Resources>
+    </ContentControl.Resources>
     
     <Grid>
         <Grid.RowDefinitions>

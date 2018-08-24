@@ -13,6 +13,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 using Engine.ViewModels;
+using Engine.ViewModels.TabControlVM;
 
 namespace MainWindow.Views
 {
@@ -28,10 +29,27 @@ namespace MainWindow.Views
 
             DataContext = viewModel;
         }
-
+       
         private void TabControl_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
+            //DataTemplate template = new DataTemplate();
+            //DataTemplateKey playKey = new DataTemplateKey(typeof(ViewDeckViewModel));
+            //DataTemplateKey deckKey = new DataTemplateKey(typeof(PlayViewModel));
+            //if (e.Source is TabControl)
+            //{
+            //    if (((TabControl)sender).SelectedItem is ViewDeckViewModel)
+            //    {
+            //        template = (DataTemplate)this.FindResource(deckKey);
+            //    }
 
+            //    if (((TabControl)sender).SelectedItem is PlayViewModel)
+            //    {
+            //        template = (DataTemplate)this.FindResource(playKey);
+            //    }
+            //}
+            
+            //((TabControl)sender).ContentTemplate = template;
+      
         }
     }
 }
